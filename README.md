@@ -102,14 +102,14 @@ Navigate to Modules -> Device Types -> Click Add Device Type
      e. Message Payload -> Click Add Attribute 
         
 |     Attribute Name    |            Data Type           | Float Precision | Integer Minimum Value | Integer Maximum Value |
-|:---------------------:|:------------------------------:|----------------:|-----------------------|-----------------------|
-| sub_metering_1        | float                          | 2               | 10                    | 100                   |
-| sub_metering_2        | float                          | 2               | 10                    | 100                   |
-| sub_metering_3        | float                          | 2               | 10                    | 25                    |
-| global_active_power   | float                          | 2               | 1                     | 8                     |
-| global_reactive_power | float                          | 2               | 5                     | 35                    |
-| voltage               | float                          | 2               | 10                    | 250                   |
-| timestamp             | UTC Timestamp (Choose Default) |                 |                       |                       |
+|:---------------------:|:------------------------------:|:---------------:|:---------------------:|:---------------------:|
+|     sub_metering_1    |              float             |               2 |                    10 |                   100 |
+|     sub_metering_2    |              float             |               2 |                    10 |                   100 |
+|     sub_metering_3    |              float             |               2 |                    10 |                    25 |
+|  global_active_power  |              float             |               2 |                     1 |                     8 |
+| global_reactive_power |              float             |               2 |                     5 |                    35 |
+|        voltage        |              float             |               2 |                    10 |                   250 |
+|       timestamp       | UTC Timestamp (Choose Default) |                 |                       |                       |
 
      f. Once the sample Message payload shows all the attributes above, Click Save        
      g. Navigate to Modules -> Widgets -> Add Widget -> Select smart-home -> Number of Devices 1 -> Submit
