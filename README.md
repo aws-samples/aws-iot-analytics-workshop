@@ -102,70 +102,14 @@ Credentials will be mailed to the email address provided during cloudformation s
         e. Message Payload -> Click Add Attribute 
         
     Repeat step e for all the below attributes. Scroll to the extreme right to capture all the values.
-          table, th, td {
-              border: 1px solid black;
-              border-collapse: collapse;
-          }
-          th, td {
-              padding: 5px;
-          }
-          th {
-              text-align: left;
-          }
-            
-        
-              
-                Attribute Name
-                Data Type
-                Float Precision
-                Integer Minimum Value
-                Integer Maximum Value
-              
-              
-                sub_metering_1
-                float
-                2
-                10
-                100
-              
-              
-                sub_metering_2
-                float
-                2
-                10
-                100
-              
-              
-                sub_metering_3
-                float
-                2
-                10
-                25
-              
-              
-                global_active_power
-                float
-                2
-                1
-                8
-              
-              
-                global_reactive_power
-                float
-                2
-                5
-                35
-              
-              
-                voltage
-                float
-                2
-                10
-                250
-              
-              
-                timestamp
-                UTC Timestamp (Choose Default)
+        Attribute Name	Data Type	Float Precision	Integer Minimum Value	Integer Maximum Value
+         sub_metering_1	float	                  2	                  10	            100
+sub_metering_2	float	2	10	100
+sub_metering_3	float	2	10	25
+global_active_power	float	2	1	8
+global_reactive_power	float	2	5	35
+voltage	float	2	10	250
+timestamp	UTC Timestamp (Choose Default)			
                 
                 
                 
