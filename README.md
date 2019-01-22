@@ -91,15 +91,15 @@ You will provision the smart home endpoint to publish telemtric data points to A
 
 **Please login to the IOT Device Simulator Management console (link copied from the earlier step) with the provided credentials.**
 
-Credentials will be mailed to the email address provided during cloudformation stack creation
+**Credentials will be mailed to the email address provided during cloudformation stack creation**
 
-    Navigate to Modules -> Device Types -> Click Add Device Type
+Navigate to Modules -> Device Types -> Click Add Device Type
     
-        a. Device Type Name - smart-home
-        b. Data Topic - smartbuilding/topic
-        c. Data Transmission Duration - 7200000
-        d. Data Transmission Interval - 3000
-        e. Message Payload -> Click Add Attribute 
+     a. Device Type Name - smart-home
+     b. Data Topic - smartbuilding/topic
+     c. Data Transmission Duration - 7200000
+     d. Data Transmission Interval - 3000
+     e. Message Payload -> Click Add Attribute 
         
 |     Attribute Name    |            Data Type           | Float Precision | Integer Minimum Value | Integer Maximum Value |
 |:---------------------:|:------------------------------:|----------------:|-----------------------|-----------------------|
@@ -111,11 +111,7 @@ Credentials will be mailed to the email address provided during cloudformation s
 | voltage               | float                          | 2               | 10                    | 250                   |
 | timestamp             | UTC Timestamp (Choose Default) |                 |                       |                       |
              
-        f. Once the sample Message payload shows the below attributes, Click Save 
-        
-        ![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/payload.png "Payload")
-
-        
+        f. Once the sample Message payload shows the below attributes, Click Save        
         g. Navigate to Modules -> Widgets -> Add Widget -> Select smart-home -> Number of Devices 1 -> Submit
     
     
