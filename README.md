@@ -311,39 +311,12 @@ Navigate to AWS IOT Analytics console, in the left navigation pane, choose Analy
     5. Frequency → Keep default (Not scheduled) -> Click Next
     6. Select from your  ECR Repository → Choose the repository container-app-ia
     7. Select your image → Choose the image with *latest *tag
-    8. Configure the inout variables (as below) -> Click Next
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 5px;
-        }
-        th {
-            text-align: left;
-        }
-          
-      
-            
-              Name
-              Type
-              Value
-            
-            
-              inputDataS3BucketName
-              String
-              iotareinvent18
-            
-            
-              inputDataS3Key
-              String
-              inputdata.csv
-            
-            
-              iotchannel
-              string
-              batchchannel
-            
+    8. Configure the input variables (as below) -> Click Next
+         | Name                  | Type   | Value          |
+         |-----------------------|--------|----------------|
+         | inputDataS3BucketName | String | iotareinvent18 |
+         | inputDataS3Key        | String | inputdata.csv  |
+         | iotchannel            | String | batchchannel   |
            
     9. Select a Role → Choose the IAM Role → search & select iotAContainerRole
     10. Configure the capacity for container :
