@@ -52,7 +52,7 @@ Let's get started
 You will build this architecture:
 ---------------------------------
 
-![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Logo Title Text 1")
+![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
 
 Build the Streaming workflow
@@ -87,7 +87,7 @@ Connect your Smart Home to AWS IoT Core
 
 You will provision the smart home endpoint to publish telemtric data points to AWS IOT.
 
-![arch.png](arch.png)
+![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
 **Please login to the IOT Device Simulator Management console (link copied from the earlier step) with the provided credentials.**
 
@@ -200,7 +200,7 @@ Create Stream Analytics Pipeline
 
 In this section we will create the IOT Analytics components, analyze data and define different pipeline activities.
 
-![arch.png](arch.png)
+![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
 **Go to the AWS IoT Analytics console**
 
@@ -248,7 +248,7 @@ Analyse Stream data
 
 ### What you will learn: Step 1c.
 
-![arch.png](arch.png)
+![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
     Create Data sets - 
     On the AWS IoT Analytics console home page, in the left navigation pane, choose Analyze -> Data sets :
@@ -276,7 +276,7 @@ In this section we will load the public dataset in batch from S3 to IOT Analytic
 
 ### What you will learn: Step 2a.
 
-![arch.png](arch.png)
+![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
 ### Launch Docker Instance with CloudFormation
 
@@ -329,7 +329,7 @@ Create Batch Analytics Pipeline
 
 ### What you will learn: Step 2b.
 
-![arch.png](arch.png)
+![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
 In this section we will create the IOT Analytics components, analyze data and define different pipeline activities.
 
@@ -429,7 +429,7 @@ Analyse the time series data from the data store (stream + batch) :
 
 ### What you will learn: Step 2c.
 
-![arch.png](arch.png)
+![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
     Create Data sets - 
     On the AWS IoT Analytics console home page, in the left navigation pane, choose Analyze -> Data sets :
@@ -458,7 +458,7 @@ Visualize using Quicksight
 
 In this section we will visualize the time series data captured from your smart home.
 
-![arch.png](arch.png)
+![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
     
     1. Go to the AWS Quicksight console in North Viriginia region - 
@@ -478,8 +478,7 @@ In this section we will visualize the time series data captured from your smart 
     
     Please feel free to play with different fields or visual types for visualizing other smart home related information. 
     
-
-![quicksight.png](quicksight.png)
+![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/quicksight.png "Quicksight")
 
 \[[Top](#Top)\]
 
@@ -490,7 +489,7 @@ Perform Forecasting with Jupyter Notebooks
 
 In this section we will configure the sagemaker instance to forecast energy utilisation at home.
 
-![arch.png](arch.png)
+![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
     
     1. Go to the AWS IOT Analytics console.
