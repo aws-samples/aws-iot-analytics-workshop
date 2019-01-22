@@ -110,9 +110,9 @@ Navigate to Modules -> Device Types -> Click Add Device Type
 | global_reactive_power | float                          | 2               | 5                     | 35                    |
 | voltage               | float                          | 2               | 10                    | 250                   |
 | timestamp             | UTC Timestamp (Choose Default) |                 |                       |                       |
-             
-        f. Once the sample Message payload shows the below attributes, Click Save        
-        g. Navigate to Modules -> Widgets -> Add Widget -> Select smart-home -> Number of Devices 1 -> Submit
+
+     f. Once the sample Message payload shows all the attributes above, Click Save        
+     g. Navigate to Modules -> Widgets -> Add Widget -> Select smart-home -> Number of Devices 1 -> Submit
     
     
 
