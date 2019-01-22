@@ -312,6 +312,7 @@ Navigate to AWS IOT Analytics console, in the left navigation pane, choose Analy
     6. Select from your  ECR Repository → Choose the repository container-app-ia
     7. Select your image → Choose the image with *latest *tag
     8. Configure the input variables (as below) -> Click Next
+    
          | Name                  | Type   | Value          |
          |-----------------------|--------|----------------|
          | inputDataS3BucketName | String | iotareinvent18 |
