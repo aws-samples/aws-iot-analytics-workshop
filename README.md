@@ -85,7 +85,7 @@ Connect your Smart Home to AWS IoT Core
 
 ### What you will learn: Step 1a.
 
-You will provision the smart home endpoint to publish telemtric data points to AWS IOT.
+You will provision the smart home endpoint to publish telemetric data points to AWS IOT.
 
 ![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
