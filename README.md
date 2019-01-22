@@ -8,7 +8,7 @@ Workshop Agenda
 
 *   [Prerequisites](#Prerequisites)
 *   [Let's get started](#Lets_get_started)
-*   [Build Streaming Workflow](#Launch_IOT_Device_Simulator)
+*   [Build the Streaming workflow](#Launch_IOT_Device_Simulator)
 *   [Connect your Smart Home to AWS IoT Core](#setup_a_home_with_AWS_IoT)
 *   [Create Stream Analytics Pipeline](#IOT_Analytics_Pipeline)
 *   [Analyse Stream data](#Analyze_Time_Series_Data)
