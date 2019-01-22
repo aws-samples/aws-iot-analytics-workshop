@@ -52,7 +52,8 @@ Let's get started
 You will build this architecture:
 ---------------------------------
 
-![arch.png](arch.png)
+[logo]: https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Logo Title Text 2"
+
 
 Build the Streaming workflow
 ----------------------------
