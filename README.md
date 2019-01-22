@@ -9,18 +9,18 @@ Workshop Agenda
 *   [Prerequisites](#prerequisites)
 *   [Let's get started](#lets-get-started)
 *   [Build the Streaming workflow](#build-the-streaming-workflow)
-*   [Connect your Smart Home to AWS IoT Core](#setup_a_home_with_AWS_IoT)
-*   [Create Stream Analytics Pipeline](#IOT_Analytics_Pipeline)
-*   [Analyse Stream data](#Analyze_Time_Series_Data)
-*   [Build Batch Workflow](#Container_Load)
-*   [Create Batch Analytics Pipeline](#Batch_Analytics_Pipeline)
-*   [Analyse Stream & Batch data](#Analyze_Data)
-*   [Visualize using Quicksight](#Visualize_Quicksight)
-*   [Perform Forecasting with Jupyter Notebooks](#ML_Sagemaker)
-*   [Clean Up](#Clean_up)
-*   [Troubleshooting](#Troubleshooting)
+*   [Connect your Smart Home to AWS IoT Core](#connect-your-smart-home-to-aws-iot-core)
+*   [Create Stream Analytics Pipeline](#create-stream-analytics-pipeline)
+*   [Analyse Stream data](#analyse-stream-data)
+*   [Build Batch Workflow](#build-batch-workflow)
+*   [Create Batch Analytics Pipeline](#create-batch-analytics-pipeline)
+*   [Analyse Stream and Batch data](#analyse-stream-and-batch-data)
+*   [Visualize using Quicksight](#visualize-using-quicksight)
+*   [Perform Forecasting with Jupyter Notebooks](#perform-forecasting-with-jupyter-notebooks)
+*   [Clean Up](#clean-up)
+*   [Troubleshooting](#troubleshooting)
 
-#Prerequisites
+Prerequisites
 -------------
 
 To conduct the workshop you will need the following tools/setup/knowledge:
@@ -207,7 +207,7 @@ Analyse Stream data
 
 \[[Top](#Top)\]
 
-Build the Batch Workflow
+Build Batch Workflow
 ------------------------
 
 In this section we will load the public dataset in batch from S3 to IOT Analytics data store using containers.
@@ -336,8 +336,8 @@ Navigate to AWS IOT Analytics console, in the left navigation pane, choose Analy
 
 \[[Top](#Top)\]
 
-Analyse the time series data from the data store (stream + batch) :
--------------------------------------------------------------------
+Analyse Stream and Batch data 
+----------------------------
 
 ### What you will learn: Step 2c.
 
