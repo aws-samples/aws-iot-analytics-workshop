@@ -310,7 +310,7 @@ Navigate to AWS IOT Analytics console, in the left navigation pane, choose Analy
     4. Choose the option - >  Create an analysis without a dataset -> Create
     5. Frequency → Keep default (Not scheduled) -> Click Next
     6. Select from your  ECR Repository → Choose the repository container-app-ia
-    7. Select your image → Choose the image with *latest *tag
+    7. Select your image → Choose the image with *latest* tag
     8. Configure the input variables (as below) -> Click Next
     
          | Name                  | Type   | Value          |
