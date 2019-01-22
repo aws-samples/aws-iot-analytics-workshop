@@ -172,7 +172,9 @@ Credentials will be mailed to the email address provided during cloudformation s
                   
              
         f. Once the sample Message payload shows the below attributes, Click Save 
-           
+        
+        ![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/payload.png "Payload")
+
         
         g. Navigate to Modules -> Widgets -> Add Widget -> Select smart-home -> Number of Devices 1 -> Submit
     
