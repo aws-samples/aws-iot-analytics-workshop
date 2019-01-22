@@ -6,9 +6,9 @@ In this workshop, you will learn about the different components of AWS IoT Analy
 Workshop Agenda
 ---------------
 
-*   [Prerequisites](#Prerequisites)
-*   [Let's get started](#Lets_get_started)
-*   [Build the Streaming workflow](#Launch_IOT_Device_Simulator)
+*   [Prerequisites](#prerequisites)
+*   [Let's get started](#lets-get-started)
+*   [Build the Streaming workflow](#build-the-streaming-workflow)
 *   [Connect your Smart Home to AWS IoT Core](#setup_a_home_with_AWS_IoT)
 *   [Create Stream Analytics Pipeline](#IOT_Analytics_Pipeline)
 *   [Analyse Stream data](#Analyze_Time_Series_Data)
@@ -20,7 +20,7 @@ Workshop Agenda
 *   [Clean Up](#Clean_up)
 *   [Troubleshooting](#Troubleshooting)
 
-Prerequisites
+#Prerequisites
 -------------
 
 To conduct the workshop you will need the following tools/setup/knowledge:
