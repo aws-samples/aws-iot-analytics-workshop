@@ -413,8 +413,7 @@ In this section we will configure the sagemaker instance to forecast energy util
     7. Create Notebook
     8. Select IoTAWorkshopSagemaker* -> IoTAnalytics -> smarthome_notebook.ipynb -> Open in Jupyter
     9. Continue without kernel. This will open the Jupyter notebook in sagemaker. 
-    10.Download the Jupyter notebook from here - [Notebook](https://s3.amazonaws.com/iotareinvent18/SmartHomeNotebook.ipynb)
-    11.Click File -> Open -> Upload (right top) -> choose Jupyter notebook downloaded in step 10 -> upload
+    10.Download the Jupyter notebook from here - \[Notebook\](https://s3.amazonaws.com/iotareinvent18/SmartHomeNotebook.ipynb)     11.Click File -> Open -> Upload (right top) -> choose Jupyter notebook downloaded in step 10 -> upload
     12.Choose conda_mxnet_p36 for kernel -> Click set kernel
     13.Step through the steps now to forecast the energy utilisation of your smart home.
       a. Click Run For each step, if there is an asterisk, that means the step is still running.
