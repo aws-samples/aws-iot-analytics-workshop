@@ -76,7 +76,7 @@ After you have been redirected to the AWS CloudFormation console take the follow
     3. Create stack
     4. Wait until the stack creation is Complete 
 
-The Cloudformation will take 5-7 mins to complete. In the **Outputs** section of your CloudFormation stack, you will find the Management console url for the IOT simulator. Please **copy the url** to use in the next section.
+The Cloudformation may take between 10-25 mins to complete. In the **Outputs** section of your CloudFormation stack, you will find the Management console url for the IOT simulator. Please **copy the url** to use in the next section.
 
 \[[Top](#Top)\]
 
