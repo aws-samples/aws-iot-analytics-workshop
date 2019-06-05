@@ -1,7 +1,7 @@
 AWS IoT Analytics Workshop
 ==========================
 
-In this workshop, you will learn about the different components of AWS IoT Analytics. You will configure AWS IoT Core to ingest stream data from AWS Device Simulator, process batch data using Amazon ECS, build an analytics pipeline using AWS IoT Analytics, visualize the data using Amazon QuickSight, and perform machine learning using Jupyter Notebooks. Join us, and build a solution that helps you perform analytics on appliance energy usage in a smart building and forecast energy utilization to optimize consumption.
+In this workshop, you will learn about the different components of AWS IoT Analytics. You will configure AWS IoT Core to ingest stream data from the AWS Device Simulator, process batch data using Amazon ECS, build an analytics pipeline using AWS IoT Analytics, visualize the data using Amazon QuickSight, and perform machine learning using Jupyter Notebooks. Join us, and build a solution that helps you perform analytics on appliance energy usage in a smart building and forecast energy utilization to optimize consumption.
 
 Workshop Agenda
 ---------------
@@ -47,13 +47,11 @@ Let's get started
 =================
 
 ## Solution Architecture Overview:
----------------------------------
 
 ![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
 
 ## Build the Streaming workflow
-----------------------------
 
 ### Launch AWS IoT Device Simulator with CloudFormation
 
