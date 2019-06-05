@@ -114,15 +114,14 @@ Navigate to **Modules** -> **Device Types** -> Click **Add Device Type**
 **Use the AWS console for the remainder of the Workshop**
 ---------------------------------------------------------
 
-Sign-in to [AWS console](https://aws.amazon.com/console). Now subscribe as below, to the MQTT topic to see the messages published from IoT Device Simulator.
+Sign-in to the [AWS console](https://aws.amazon.com/console).
 
-    1. Choose IoT Core service
-    2. Click Test (On left pane) 
-    3. Subscription topic: smartbuilding/topic -> Click Subscribe to topic
-    
-    Watch at the MQTT client in the AWS IoT Core console if the messages are coming for smart-home configured with IOT Device Simulator.
-    It might take 15-20 seconds for the messages to appear.
-    
+Next, we will verify that the smart home device is configured and publishing data to the correct topic.
+ 1. From the AWS console, choose the **IoT Core** service
+ 2. Navigate to **Test** (On left pane) 
+ 3. Under **Subscription**, input **Subscription topic:** 'smartbuilding/topic' and click **Subscribe to topic**
+
+After a few seconds, you should see your simulated devices's data that is published on the 'smartbuilding/topic' MQTT topic. 
 
 \[[Top](#Top)\]
 
