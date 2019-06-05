@@ -42,16 +42,15 @@ Before you start with the workshop, please ensure that -
 
  You are in us-east-1 (N Virgina), us-east-2 (Ohio) , us-west-2 (Oregon) or eu-west-1 (Ireland) region, and you do not have more than 3 VPCs already deployed in that region.
 
-
-Let's get started
-=================
-
 ## Solution Architecture Overview:
 
 ![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
 
-## Build the Streaming workflow
+Let's get started
+=================
+
+## Step 1a: Build the Streaming workflow
 
 ### Launch AWS IoT Device Simulator with CloudFormation
 
@@ -75,10 +74,7 @@ The CloudFormation creation may take between **10-25 mins to complete**. In the 
 
 \[[Top](#Top)\]
 
-Connect your Smart Home to AWS IoT Core
----------------------------------------
-
-### What you will learn: Step 1a.
+### Connect your Smart Home to AWS IoT Core
 
 You will provision the smart home endpoint to publish telemetric data points to AWS IoT.
 
@@ -89,7 +85,7 @@ Please login to the IoT Device Simulator Management console (link copied from th
 Credentials for the Device Simulator will be mailed to the email address provided during CloudFormation stack creation.
 
 
-### Create the Simulated Device
+#### Create the Simulated Device
 
 Navigate to **Modules** -> **Device Types** -> Click **Add Device Type**
     
@@ -128,8 +124,7 @@ After a few seconds, you should see your simulated devices's data that is publis
 
 \[[Top](#Top)\]
 
-Create Stream Analytics Pipeline
---------------------------------
+## Step 1b: Create Stream Analytics Pipeline
 
 ### What you will learn: Step 1b.
 
