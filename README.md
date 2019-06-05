@@ -88,9 +88,12 @@ Please login to the IoT Device Simulator Management console (link copied from th
 
 Credentials for the Device Simulator will be mailed to the email address provided during CloudFormation stack creation.
 
+
+### Create the Simulated Device
+
 Navigate to **Modules** -> **Device Types** -> Click **Add Device Type**
     
- 1. **Device Type Name:** - smart-home  
+ 1. **Device Type Name:** smart-home  
  2. **Data Topic:** smartbuilding/topic  
  3. **Data Transmission Duration:** 7200000  
  4. **Data Transmission Interval:** 3000  
@@ -118,7 +121,7 @@ Sign-in to the [AWS console](https://aws.amazon.com/console).
 
 Next, we will verify that the smart home device is configured and publishing data to the correct topic.
  1. From the AWS console, choose the **IoT Core** service
- 2. Navigate to **Test** (On left pane) 
+ 2. Navigate to **Test** (On the left pane) 
  3. Under **Subscription**, input **Subscription topic:** 'smartbuilding/topic' and click **Subscribe to topic**
 
 After a few seconds, you should see your simulated devices's data that is published on the 'smartbuilding/topic' MQTT topic. 
