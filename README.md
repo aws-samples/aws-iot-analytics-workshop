@@ -1,7 +1,7 @@
 AWS IOT Analytics Workshop
 ==========================
 
-In this workshop, you will learn about the different components of AWS IoT Analytics. You will configure AWS IoT Core to ingest stream data from AWS Device Simulator, process batch data using Amazon ECS, build an analytics pipeline using AWS IOT Analytics, visualize the data using Amazon QuickSight, and perform machine learning using Jupyter Notebooks. Join us, and build a solution that helps you perform analytics on appliance energy usage in a smart building and forecast energy utilization to optimize consumption.
+In this workshop, you will learn about the different components of AWS IoT Analytics. You will configure AWS IoT Core to ingest stream data from AWS Device Simulator, process batch data using Amazon ECS, build an analytics pipeline using AWS IoT Analytics, visualize the data using Amazon QuickSight, and perform machine learning using Jupyter Notebooks. Join us, and build a solution that helps you perform analytics on appliance energy usage in a smart building and forecast energy utilization to optimize consumption.
 
 Workshop Agenda
 ---------------
@@ -40,28 +40,26 @@ To conduct the workshop you will need the following tools/setup/knowledge:
 Before you start with the workshop, please ensure that -
 --------------------------------------------------------
 
-### You are in US-EAST-1 (N Virgina), US-EAST-2 (Ohio) , US-WEST-2 (Oregon) or EU-WEST-1 (Ireland) region
+ You are in us-east-1 (N Virgina), us-east-2 (Ohio) , us-west-2 (Oregon) or eu-west-1 (Ireland) region, and you do not have more than 3 VPCs already deployed in that region.
 
-### And
-
-### You DONOT have more than 3 VPC's in that region
 
 Let's get started
 =================
 
-You will build this architecture:
+## Solution Architecture Overview:
 ---------------------------------
 
 ![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
 
-Build the Streaming workflow
+## Build the Streaming workflow
 ----------------------------
 
-### Launch AWS IOT Device Simulator with CloudFormation
+### Launch AWS IoT Device Simulator with CloudFormation
 
-By choosing one of the links below you will be automatically redirected to the CloudFormation section of the AWS Console where your stack will be launched.
+The IoT Device Simulator allows you to simulate real world devices by creating device types and data schemas via a web interface and allowing them to connect to the AWS IoT message broker.
 
+By choosing one of the links below you will be automatically redirected to the CloudFormation section of the AWS Console where your IoT Device Simulator stack will be launched:
 * * *
 
 *   [Launch CloudFormation stack in us-east-1](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?stackName=IoTDeviceSimulator&templateURL=https://s3.amazonaws.com/solutions-reference/iot-device-simulator/latest/iot-device-simulator.template) (N. Virginia)
@@ -69,14 +67,14 @@ By choosing one of the links below you will be automatically redirected to the C
 *   [Launch CloudFormation stack in us-east-2](https://console.aws.amazon.com/cloudformation/home?region=us-east-2#/stacks/create/review?stackName=IoTDeviceSimulator&templateURL=https://s3.amazonaws.com/solutions-reference/iot-device-simulator/latest/iot-device-simulator.template) (Ohio)
 *   [Launch CloudFormation stack in eu-west-1](https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/create/review?stackName=IoTDeviceSimulator&templateURL=https://s3.amazonaws.com/solutions-reference/iot-device-simulator/latest/iot-device-simulator.template) (Ireland)
 
-After you have been redirected to the AWS CloudFormation console take the following steps to launch you stack:
+After you have been redirected to the AWS CloudFormation console, take the following steps to launch your stack:
 
-    1. Parameters - Choose Administrator Name & Email (Email address must be Accessible, this is where you will get the password)
-    2. Capabilities -> check "I acknowledge that AWS CloudFormation might create IAM resources." at the bottom of the page
-    3. Create stack
-    4. Wait until the stack creation is Complete 
+ 1. **Parameters** - Input Administrator Name & Email (An ID and password will be emailed to you for the IoT Device Simulator)
+ 2. **Capabilities** - Check "I acknowledge that AWS CloudFormation might create IAM resources." at the bottom of the page
+ 3. **Create Stack**
+ 4. Wait until the stack creation is complete 
 
-The Cloudformation may take between **10-25 mins to complete**. In the **Outputs** section of your CloudFormation stack, you will find the Management console url for the IOT simulator. Please **copy the url** to use in the next section.
+The CloudFormation creation may take between **10-25 mins to complete**. In the **Outputs** section of your CloudFormation stack, you will find the Management console URL for the IoT simulator. Please **copy the url** to use in the next section.
 
 \[[Top](#Top)\]
 
@@ -85,21 +83,21 @@ Connect your Smart Home to AWS IoT Core
 
 ### What you will learn: Step 1a.
 
-You will provision the smart home endpoint to publish telemetric data points to AWS IOT.
+You will provision the smart home endpoint to publish telemetric data points to AWS IoT.
 
 ![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
-**Please login to the IOT Device Simulator Management console (link copied from the earlier step) with the provided credentials.**
+Please login to the IoT Device Simulator Management console (link copied from the earlier step) with the provided credentials.
 
-**Credentials will be mailed to the email address provided during cloudformation stack creation**
+Credentials will be mailed to the email address provided during CloudFormation stack creation.
 
-Navigate to Modules -> Device Types -> Click Add Device Type
+Navigate to **Modules** -> **Device Types** -> Click **Add Device Type**
     
-     a. Device Type Name - smart-home
-     b. Data Topic - smartbuilding/topic
-     c. Data Transmission Duration - 7200000
-     d. Data Transmission Interval - 3000
-     e. Message Payload -> Click Add Attribute 
+ 1. **Device Type Name:** - smart-home  
+ 1. **Data Topic:** smartbuilding/topic  
+ 1. **Data Transmission Duration:** 7200000  
+ 1. **Data Transmission Interval:** 3000  
+ 1. **Message Payload:** Click Add Attribute and add the following attributes:  
         
 |     Attribute Name    |            Data Type           | Float Precision | Integer Minimum Value | Integer Maximum Value |
 |:---------------------:|:------------------------------:|:---------------:|:---------------------:|:---------------------:|
@@ -119,9 +117,9 @@ Navigate to Modules -> Device Types -> Click Add Device Type
 **Use the AWS console for the remainder of the Workshop**
 ---------------------------------------------------------
 
-Sign-in to [AWS console](https://aws.amazon.com/console). Now subscribe as below, to the MQTT topic to see the messages published from IOT Device Simulator.
+Sign-in to [AWS console](https://aws.amazon.com/console). Now subscribe as below, to the MQTT topic to see the messages published from IoT Device Simulator.
 
-    1. Choose IOT Core service
+    1. Choose IoT Core service
     2. Click Test (On left pane) 
     3. Subscription topic: smartbuilding/topic -> Click Subscribe to topic
     
@@ -136,7 +134,7 @@ Create Stream Analytics Pipeline
 
 ### What you will learn: Step 1b.
 
-In this section we will create the IOT Analytics components, analyze data and define different pipeline activities.
+In this section we will create the IoT Analytics components, analyze data and define different pipeline activities.
 
 ![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
@@ -177,7 +175,7 @@ In this section we will create the IOT Analytics components, analyze data and de
         j. Click Create pipeline
     
 
-Now we have created the IOT Analytics Pipeline lets analyze the data.
+Now we have created the IoT Analytics Pipeline lets analyze the data.
 
 \[[Top](#Top)\]
 
@@ -210,7 +208,7 @@ Analyse Stream data
 Build Batch Workflow
 ------------------------
 
-In this section we will load the public dataset in batch from S3 to IOT Analytics data store using containers.
+In this section we will load the public dataset in batch from S3 to IoT Analytics data store using containers.
 
 ### What you will learn: Step 2a.
 
@@ -269,7 +267,7 @@ Create Batch Analytics Pipeline
 
 ![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
-In this section we will create the IOT Analytics components, analyze data and define different pipeline activities.
+In this section we will create the IoT Analytics components, analyze data and define different pipeline activities.
 
 **Go to the AWS IoT Analytics console**
 
@@ -295,13 +293,13 @@ In this section we will create the IOT Analytics components, analyze data and de
           g. Click Create pipeline
       
 
-Now we have created the IOT Analytics Pipeline lets load the batch data.
+Now we have created the IoT Analytics Pipeline lets load the batch data.
 
 #### Create Container Data Set
 
 A container data set allows you to automatically run your analysis tools and generate results. It brings together a SQL data set as input, a Docker container with your analysis tools and needed library files, input and output variables, and an optional schedule trigger. The input and output variables tell the executable image where to get the data and store the results.
 
-Navigate to AWS IOT Analytics console, in the left navigation pane, choose Analyze.
+Navigate to AWS IoT Analytics console, in the left navigation pane, choose Analyze.
 
      
     1. Click on Analyze -> Data Sets → Create
@@ -375,12 +373,12 @@ In this section we will visualize the time series data captured from your smart 
     
     1. Go to the AWS Quicksight console in North Viriginia region - 
         a. Enroll for standard edition (if you have not used it before)
-        b. Click on your login user (upper right) -> Manage Quicksight -> Account Settings -> Manage Quicksight Permissions -> Check IOT Analytics -> Apply
+        b. Click on your login user (upper right) -> Manage Quicksight -> Account Settings -> Manage Quicksight Permissions -> Check IoT Analytics -> Apply
         c. Click on Quicksight logo (upper left) to navigate to home page 
         d. Change the region to your working region now
-    2. Select New Analysis -> New data set -> Choose AWS IOT Analytics
+    2. Select New Analysis -> New data set -> Choose AWS IoT Analytics
     3. Enter Data source name -> smarthome-dashboard
-    4. Select an AWS IOT Analytics dataset to import - batchdataset
+    4. Select an AWS IoT Analytics dataset to import - batchdataset
     5. Create data source -> Visualize
     6. Determine the home energy consumption - 
         a. Choose the sub_metering_* readings for Value axis (Choose average from Value drop down) 
@@ -404,7 +402,7 @@ In this section we will configure the sagemaker instance to forecast energy util
 ![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
     
-    1. Go to the AWS IOT Analytics console.
+    1. Go to the AWS IoT Analytics console.
     2. Select Analyze -> Notebooks -> Create
     3. Choose Blank Notebook
     4. Name -> smarthome_notebook
@@ -433,8 +431,8 @@ Clean Up
         a. Execute clean-up.sh from /home/ec2-user/clean-up directory 
     
     2. Go to the AWS Cloudformation console
-        a. Delete the IOT Device Simulator stack
-        b. Delete the IOTAReinvent stack
+        a. Delete the IoT Device Simulator stack
+        b. Delete the IoTAReinvent stack
     
     3. Go to the AWS Quicksight console
         a. Click on Manage Data (upper right)
@@ -455,7 +453,7 @@ Clean Up
 Troubleshooting
 ---------------
 
-**Troubleshooting for IOT Core issues. Go to the AWS IoT Core console**
+**Troubleshooting for IoT Core issues. Go to the AWS IoT Core console**
 
     1. Get started (only if no resources are provisioned)
     2. Click upgrade to JSON logging if prompted
@@ -467,11 +465,11 @@ Troubleshooting
 
 The log files from AWS IoT are send to **Amazon CloudWatch**. The AWS console can be used to look at these logs.
 
-For additional troubleshooting, refer to here [IOT Core Troubleshooting](https://docs.aws.amazon.com/iot/latest/developerguide/iot_troubleshooting.html)
+For additional troubleshooting, refer to here [IoT Core Troubleshooting](https://docs.aws.amazon.com/iot/latest/developerguide/iot_troubleshooting.html)
 
 \[[Top](#Top)\]
 
-**Troubleshooting for IOT Analytics issues. Go to the AWS IoT Analytics console**
+**Troubleshooting for IoT Analytics issues. Go to the AWS IoT Analytics console**
 
     1. Get started (only if no resources are provisioned)
     2. Click on Settings in left pane
@@ -482,6 +480,6 @@ For additional troubleshooting, refer to here [IOT Core Troubleshooting](https:/
 
 The log files from AWS IoT Analytics will be send to **Amazon CloudWatch**. The AWS console can be used to look at these logs.
 
-For additional troubleshooting, refer to here [IOT Analytics Troubleshooting](https://docs.aws.amazon.com/iotanalytics/latest/userguide/troubleshoot.html)
+For additional troubleshooting, refer to here [IoT Analytics Troubleshooting](https://docs.aws.amazon.com/iotanalytics/latest/userguide/troubleshoot.html)
 
 \[[Top](#Top)\]
