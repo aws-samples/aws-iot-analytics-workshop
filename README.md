@@ -109,9 +109,8 @@ Navigate to **Modules** -> **Device Types** -> Click **Add Device Type**
  7. Navigate to **Modules** -> **Widgets** -> **Add Widget** -> Select 'smart-home' -> Number of Devices: 1 -> **Submit**
     
  We have now created a simulated smart home device which is collecting power usage data and publishing that data to AWS IoT Core on the 'smartbuilding/topic' topic.
-
-**Use the AWS console for the remainder of the Workshop**
----------------------------------------------------------
+ 
+**Note**: *You will use the AWS console for the remainder of the workshop.
 
 Sign-in to the [AWS console](https://aws.amazon.com/console).
 
