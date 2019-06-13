@@ -1,10 +1,8 @@
-AWS IoT Analytics Workshop
-==========================
+# AWS IoT Analytics Workshop
 
 In this workshop, you will learn about the different components of AWS IoT Analytics. You will configure AWS IoT Core to ingest stream data from the AWS Device Simulator, process batch data using Amazon ECS, build an analytics pipeline using AWS IoT Analytics, visualize the data using Amazon QuickSight, and perform machine learning using Jupyter Notebooks. Join us, and build a solution that helps you perform analytics on appliance energy usage in a smart building and forecast energy utilization to optimize consumption.
 
-Workshop Agenda
----------------
+## Workshop Agenda
 
 *   [Prerequisites](#prerequisites)
 *   [Let's get started](#lets-get-started)
@@ -20,8 +18,7 @@ Workshop Agenda
 *   [Clean Up](#clean-up)
 *   [Troubleshooting](#troubleshooting)
 
-Prerequisites
--------------
+## Prerequisites
 
 To conduct the workshop you will need the following tools/setup/knowledge:
 
@@ -36,11 +33,12 @@ To conduct the workshop you will need the following tools/setup/knowledge:
     *   A ssh key-pair can be generated or imported in the AWS console under EC2 -> Key Pairs
     *   Download the .pem file locally to log into the Ec2 docker instance later in the workshop
     *   For MAC / UNIX, change permissions - chmod 400 "paste-your-keypair-filename"
-
-Before you start with the workshop, please ensure that -
---------------------------------------------------------
-
- You are in us-east-1 (N Virgina), us-east-2 (Ohio) , us-west-2 (Oregon) or eu-west-1 (Ireland) region, and you do not have more than 3 VPCs already deployed in that region.
+*   You are in one of the following regions:
+    * us-east-1 (N Virgina)
+    * us-east-2 (Ohio)
+    * us-west-2 (Oregon)
+    * eu-west-1 (Ireland)
+*   You do not have more than 3 VPCs already deployed in the active region
 
 ## Solution Architecture Overview:
 
@@ -109,12 +107,13 @@ Navigate to **Modules** -> **Device Types** -> Click **Add Device Type**
  7. Navigate to **Modules** -> **Widgets** -> **Add Widget** -> Select 'smart-home' -> Number of Devices: 1 -> **Submit**
     
  We have now created a simulated smart home device which is collecting power usage data and publishing that data to AWS IoT Core on the 'smartbuilding/topic' topic.
- 
-**Note**: *You will use the AWS console for the remainder of the workshop.
+
+#### Verify that the data is being published to AWS IoT
 
 Sign-in to the [AWS console](https://aws.amazon.com/console).
+**Note**: *You will use the AWS console for the remainder of the workshop.*
 
-Next, we will verify that the smart home device is configured and publishing data to the correct topic.
+We will verify that the smart home device is configured and publishing data to the correct topic.
  1. From the AWS console, choose the **IoT Core** service
  2. Navigate to **Test** (On the left pane) 
  3. Under **Subscription**, input **Subscription topic:** 'smartbuilding/topic' and click **Subscribe to topic**
