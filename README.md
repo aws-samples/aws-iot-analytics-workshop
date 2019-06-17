@@ -124,13 +124,24 @@ After a few seconds, you should see your simulated devices's data that is publis
 
 ## Step 1b: Create Stream Analytics Pipeline
 
-### What you will learn: Step 1b.
-
 In this section we will create the IoT Analytics components, analyze data and define different pipeline activities.
 
 ![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
-**Go to the AWS IoT Analytics console**
+### Create your IoT Analytics S3 Storage Buckets
+
+//TODO
+
+### Create the IoT Analytics Channel
+
+1. Navigate to the **AWS IoT Analytics** console.
+2. In the left navigation pane, navigate to **Channels**
+3. Input 'streamchannel' as the Channel ID.
+4. Choose 'Customer-managed S3 bucket' under Choose the Storage Type.
+5. Choose your Channel S3 Bucket created in the previous step.
+6. Choose 'Create new' next to IAM Role, and give your new IAM Role a name. This will give IoT Analytics the correct IAM policies to access your S3 Bucket.
+7. Click 'Next' and then 'Create Channel'
+
 
     Create Channel - 
     
