@@ -137,47 +137,43 @@ In this section we will create the IoT Analytics components, analyze data and de
 
 1. Navigate to the **AWS IoT Analytics** console.
 2. In the left navigation pane, navigate to **Channels**
-3. Input 'streamchannel' as the Channel ID.
-4. Choose 'Customer-managed S3 bucket' under Choose the Storage Type.
-5. Choose your Channel S3 Bucket created in the previous step.
-6. Choose 'Create new' next to IAM Role, and give your new IAM Role a name. This will give IoT Analytics the correct IAM policies to access your S3 Bucket.
+3. **Create** a new channel
+3. **ID:** streamchannel
+4. **Choose the Storage Type:** Customer Managed S3 Bucket, and choose your Channel S3 bucket created in the previous step.
+6. Choose 'Create new' next to **IAM Role**, and give your new IAM Role a name. This will give IoT Analytics the correct IAM policies to access your S3 bucket.
 7. Click 'Next' and then 'Create Channel'
 
+### Create the IoT Analytics Data Store for your pipeline
 
-    Create Channel - 
-    
-    On the AWS IoT Analytics console home page, in the left navigation pane, choose Prepare -> Channels :
-        a. Click Create
-        b. Channel ID - streamchannel (Keep all other options deafault , click Next)
-        c. IoT Core topic filter - smartbuilding/topic
-        d. IAM role  name - Create new -> Enter role name smarthome-role
-        e. Create Channel
-    
-    Create Data store - 
-    On the AWS IoT Analytics console home page, in the left navigation pane, choose Prepare -> Data stores :
-        a. Click Create
-        b. ID - iotastore (Keep all other options deafault)
-        c. Click Create data store
-    
-    Create Pipeline - 
-    On the AWS IoT Analytics console home page, in the left navigation pane, choose Prepare -> Pipeline :
-        a. Click Create
-        b. Pipeline ID - streampipeline
-        c. pipeline source - streamchannel (Click Next)
-        d. Set attributes of messages - You should see incoming messages here -> Click Next
-            i.  Do not select any attributes, by default , all will be stored.
-            ii. If you dont see incoming messages , check with support.  
-        e. Add activity - Calculate a message attribute
-            i. Attribute Name : cost
-            ii.Formula : (sub_metering_1 + sub_metering_2 + sub_metering_3) * 1.5
-        f. Click update preview -> Cost field should appear in outgoing message
-        g. Add activity - Remove attributes from the message
-            i. select Attribute name : _id_
-            ii.Click Next
-        h. Click update preview -> _id_ field should disappear from outgoing message 
-        i. Pipeline output -  Select iotastore
-        j. Click Create pipeline
-    
+1. Navigate to the **AWS IoT Analytics** console.
+2. In the left navigation pane, navigate to **Data stores**
+3. **Create** a new data store
+4. **ID:** iotastore
+5. **Choose the Storage Type:** Customer Managed S3 Bucket, and choose your Data Store S3 bucket created in the previous step.
+7. **IAM Role:** Create New, and give your new IAM Role a name. This will give IoT Analytics the correct IAM policies to access your S3 bucket.
+8. Click 'Next' and then 'Create data store'
+
+### Create the IoT Analytics Pipeline
+
+1. Navigate to the **AWS IoT Analytics** console.
+2. In the left navigation pane, navigate to **Pipeliness**
+3. **Create** a new Pipeline
+4. **ID:** streampipeline
+5. **Pipeline source**: streamchannel
+6. Click 'Next'
+7. IoT Analytics will automatically parse the data coming from your channel and list the attributes from your simulated device. By default, all messages are selected.
+8. Click 'Next'
+9. Under 'Pipeline activites' you can trasform the data in your pipeline, add, or remove attributes
+10. Click **Add Activity** and choose **Calculate a message attribute** as the type.
+11. **Attribute Name:** cost
+12. **Formula:** (sub_metering_1 + sub_metering_2 + sub_metering_3) * 1.5
+13. Test your formula by clicking **Update preview** and the cost attribute will appear in the message payload below.
+14. Add a second activity by clicking **Add activity** and **Remove attributes from a message**
+15. **Attribute Name:** _id_ and click 'Next'
+16. Click **Update preview** and the _id_ attribute will dissappear from the message payload.
+17. Click 'Next'
+18. **Pipeline output:** Click 'Edit' and choose 'iotastore'
+19. Click **Create Pipeline** 
 
 Now we have created the IoT Analytics Pipeline lets analyze the data.
 
