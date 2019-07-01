@@ -111,6 +111,7 @@ Navigate to **Modules** -> **Device Types** -> Click **Add Device Type**
 #### Verify that the data is being published to AWS IoT
 
 Sign-in to the [AWS console](https://aws.amazon.com/console).
+
 **Note**: *You will use the AWS console for the remainder of the workshop.*
 
 We will verify that the smart home device is configured and publishing data to the correct topic.
