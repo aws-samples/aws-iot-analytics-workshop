@@ -175,32 +175,40 @@ In this section we will create the IoT Analytics components, analyze data and de
 18. **Pipeline output:** Click 'Edit' and choose 'iotastore'
 19. Click **Create Pipeline** 
 
-Now we have created the IoT Analytics Pipeline lets analyze the data.
+Your IoT Analytics pipeline is now set up.
 
 \[[Top](#Top)\]
 
-Analyse Stream data
--------------------
+## Step 1c: Analyse the data
 
-### What you will learn: Step 1c.
+In this section, you will learn how to use IoT Analytics to extract insights from your data set using SQL.
 
 ![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
-    Create Data sets - 
-    On the AWS IoT Analytics console home page, in the left navigation pane, choose Analyze -> Data sets :
-        a. Click Create -> SQL Data sets -> Create SQL
-        b. ID - streamdataset
-        c. Data store source - iotastore , Click Next
-        d. SQL Query - Keep the default
-        e. Data Selection Window - Choose Delta Time
-            i. Offset ->  -5 seconds (please ensure its negative 5)
-            ii.Timestamp -> from_iso8601_timestamp(timestamp)
-        d. Keep rest of the options default and Create data set
-    
-    Now lets execute the dataset : 
-        a. Datasets ->  streamdataset (click on it) -> Actions -> Run now
-        b. Wait for few mins for the results to appear in the Result preview section of the screen.
-        c. If there are no results in Result preview pane , re-run the dataset again.
+
+### Create a data set
+
+1. Navigate to the **AWS IoT Analytics** console.
+2. In the left navigation pane, navigate to **Data sets**
+3. Choose **Create a data set**
+4. Select **Create SQL**
+5. **ID:** streamdataset
+6. **Select data store source:** iotastore - this is the S3 bucket containing the transformed data created in step 1b.
+7. Click **Next**
+8. Keep the default SQL statement, which should read ``SELECT * FROM iotastore`` and click **Next**
+9. **Data selection window:** Delta time
+10. **Offset:** -5 Seconds
+11. **Timestamp expression:** from_iso8601_timestamp(timestamp)
+12. Choose **Next**
+13. The rest of the options can remain as default. Click **Next** and then **Create data set**
+
+### Execute the dataset
+
+1. Navigate to **Data sets** on the lefthand navigation pane of the AWS IoT Analytics console.
+2. Click on 'streamdataset'
+3. Click on **Actions** and in the dropdown menu choose **Run now**
+4. On the left navigation menu, choose **Content** and monitor the status of your data set creation.
+5. The results will be shown in the preview pane.
     
 
 \[[Top](#Top)\]
