@@ -81,7 +81,6 @@ Credentials for the Device Simulator will be mailed to the email address provide
 
 #### Create the Simulated Device
  1. Navigate to **Modules** -> **Device Types** -> Click **Add Device Type**
- 1. Input the following:
     *  **Device Type Name:** smart-home  
     *  **Data Topic:** smartbuilding/topic  
     *  **Data Transmission Duration:** 7200000  
@@ -132,11 +131,11 @@ In this section we will create the IoT Analytics components, analyze data and de
 
 1. Navigate to the **AWS IoT Analytics** console.
 2. In the left navigation pane, navigate to **Channels**
-    * **Create** a new channel
+3. **Create** a new channel
     * **ID:** streamchannel
     * **Choose the Storage Type:** Customer Managed S3 Bucket, and choose your Channel S3 bucket created in the previous step.
-6. Choose 'Create new' next to **IAM Role**, and give your new IAM Role a name. This will give IoT Analytics the correct IAM policies to access your S3 bucket.
-7. Click 'Next' and then **'Create Channel'**
+    * **IAM Role:** Create New, and give your new IAM Role a name. This will give IoT Analytics the correct IAM policies to access your S3 bucket.
+7. Click 'Next' and then **Create Channel**
 
 ### Create the IoT Analytics Data Store for your pipeline
 
@@ -146,7 +145,7 @@ In this section we will create the IoT Analytics components, analyze data and de
     * **ID:** iotastore
     * **Choose the Storage Type:** Customer Managed S3 Bucket, and choose your Data Store S3 bucket created in the previous step.
     * **IAM Role:** Create New, and give your new IAM Role a name. This will give IoT Analytics the correct IAM policies to access your S3 bucket.
-4. Click 'Next' and then **'Create data store'**
+4. Click 'Next' and then **Create data store**
 
 ### Create the IoT Analytics Pipeline
 
@@ -161,7 +160,7 @@ In this section we will create the IoT Analytics components, analyze data and de
 9. Under 'Pipeline activites' you can trasform the data in your pipeline, add, or remove attributes
 10. Click **Add Activity** and choose **Calculate a message attribute** as the type.
    * **Attribute Name:** cost
-   * **Formula:** (sub_metering_1 + sub_metering_2 + sub_metering_3) * 1.5
+   * **Formula:** ``(sub_metering_1 + sub_metering_2 + sub_metering_3) * 1.5``
 13. Test your formula by clicking **Update preview** and the cost attribute will appear in the message payload below.
 14. Add a second activity by clicking **Add activity** and **Remove attributes from a message**
    * **Attribute Name:** _id_ and click 'Next'
@@ -187,13 +186,14 @@ In this section, you will learn how to use IoT Analytics to extract insights fro
 2. In the left navigation pane, navigate to **Data sets**
 3. Choose **Create a data set**
 4. Select **Create SQL**
-5. **ID:** streamdataset
-6. **Select data store source:** iotastore - this is the S3 bucket containing the transformed data created in step 1b.
+    * **ID:** streamdataset
+    * **Select data store source:** iotastore - this is the S3 bucket containing the transformed data created in step 1b.
 7. Click **Next**
 8. Keep the default SQL statement, which should read ``SELECT * FROM iotastore`` and click **Next**
-9. **Data selection window:** Delta time
-10. **Offset:** -5 Seconds
-11. **Timestamp expression:** from_iso8601_timestamp(timestamp)
+9. Input the folllowing:
+    * **Data selection window:** Delta time
+    * **Offset:** -5 Seconds
+    * **Timestamp expression:** ``from_iso8601_timestamp(timestamp)``
 12. Choose **Next**
 13. The rest of the options can remain as default. Click **Next** and then **Create data set**
 
