@@ -44,10 +44,6 @@ To conduct the workshop you will need the following tools/setup/knowledge:
 
 ![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
-
-Let's get started
-=================
-
 ## Step 1a: Build the Streaming workflow
 
 ### Launch AWS IoT Device Simulator with CloudFormation
@@ -84,14 +80,13 @@ Credentials for the Device Simulator will be mailed to the email address provide
 
 
 #### Create the Simulated Device
-
-Navigate to **Modules** -> **Device Types** -> Click **Add Device Type**
-    
- 1. **Device Type Name:** smart-home  
- 2. **Data Topic:** smartbuilding/topic  
- 3. **Data Transmission Duration:** 7200000  
- 4. **Data Transmission Interval:** 3000  
- 5. **Message Payload:** Click Add Attribute and add the following attributes:  
+ 1. Navigate to **Modules** -> **Device Types** -> Click **Add Device Type**
+ 1. Input the following:
+    *  **Device Type Name:** smart-home  
+    *  **Data Topic:** smartbuilding/topic  
+    *  **Data Transmission Duration:** 7200000  
+    * **Data Transmission Interval:** 3000  
+    * **Message Payload:** Click **Add Attribute** and add the following attributes:  
         
 |     Attribute Name    |            Data Type           | Float Precision | Integer Minimum Value | Integer Maximum Value |
 |:---------------------:|:------------------------------:|:---------------:|:---------------------:|:---------------------:|
@@ -103,8 +98,10 @@ Navigate to **Modules** -> **Device Types** -> Click **Add Device Type**
 |        voltage        |              float             |               2 |                    10 |                   250 |
 |       timestamp       | UTC Timestamp (Choose Default) |                 |                       |                       |
 
- 6. Once the sample message payload shows all the attributes above, click **Save**
- 7. Navigate to **Modules** -> **Widgets** -> **Add Widget** -> Select 'smart-home' -> Number of Devices: 1 -> **Submit**
+ 3. Once the sample message payload shows all the attributes above, click **Save**
+ 4. Navigate to **Modules** -> **Widgets** -> **Add Widget** 
+    * Select 'smart-home'
+    * **Number of Devices:** 1 -> **Submit**
     
  We have now created a simulated smart home device which is collecting power usage data and publishing that data to AWS IoT Core on the 'smartbuilding/topic' topic.
 
@@ -156,20 +153,20 @@ In this section we will create the IoT Analytics components, analyze data and de
 ### Create the IoT Analytics Pipeline
 
 1. Navigate to the **AWS IoT Analytics** console.
-2. In the left navigation pane, navigate to **Pipeliness**
-3. **Create** a new Pipeline
-4. **ID:** streampipeline
-5. **Pipeline source**: streamchannel
-6. Click 'Next'
+2. In the left navigation pane, navigate to **Pipelines**
+3. **Create** a new Pipeline:
+   4. **ID:** streampipeline
+   5. **Pipeline source**: streamchannel
+6. Click **Next**
 7. IoT Analytics will automatically parse the data coming from your channel and list the attributes from your simulated device. By default, all messages are selected.
-8. Click 'Next'
+8. Click **Next**
 9. Under 'Pipeline activites' you can trasform the data in your pipeline, add, or remove attributes
-10. Click **Add Activity** and choose **Calculate a message attribute** as the type.
-11. **Attribute Name:** cost
-12. **Formula:** (sub_metering_1 + sub_metering_2 + sub_metering_3) * 1.5
+   10. Click **Add Activity** and choose **Calculate a message attribute** as the type.
+   11. **Attribute Name:** cost
+   12. **Formula:** (sub_metering_1 + sub_metering_2 + sub_metering_3) * 1.5
 13. Test your formula by clicking **Update preview** and the cost attribute will appear in the message payload below.
 14. Add a second activity by clicking **Add activity** and **Remove attributes from a message**
-15. **Attribute Name:** _id_ and click 'Next'
+   15. **Attribute Name:** _id_ and click 'Next'
 16. Click **Update preview** and the _id_ attribute will dissappear from the message payload.
 17. Click 'Next'
 18. **Pipeline output:** Click 'Edit' and choose 'iotastore'
