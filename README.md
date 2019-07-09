@@ -107,9 +107,7 @@ Credentials for the Device Simulator will be mailed to the email address provide
 
 #### Verify that the data is being published to AWS IoT
 
-Sign-in to the [AWS console](https://aws.amazon.com/console).
-
-**Note**: *You will use the AWS console for the remainder of the workshop.*
+**Note**: *You will use the AWS console for the remainder of the workshop. Sign-in to the [AWS console](https://aws.amazon.com/console).*
 
 We will verify that the smart home device is configured and publishing data to the correct topic.
  1. From the AWS console, choose the **IoT Core** service
@@ -134,39 +132,39 @@ In this section we will create the IoT Analytics components, analyze data and de
 
 1. Navigate to the **AWS IoT Analytics** console.
 2. In the left navigation pane, navigate to **Channels**
-3. **Create** a new channel
-3. **ID:** streamchannel
-4. **Choose the Storage Type:** Customer Managed S3 Bucket, and choose your Channel S3 bucket created in the previous step.
+    * **Create** a new channel
+    * **ID:** streamchannel
+    * **Choose the Storage Type:** Customer Managed S3 Bucket, and choose your Channel S3 bucket created in the previous step.
 6. Choose 'Create new' next to **IAM Role**, and give your new IAM Role a name. This will give IoT Analytics the correct IAM policies to access your S3 bucket.
-7. Click 'Next' and then 'Create Channel'
+7. Click 'Next' and then **'Create Channel'**
 
 ### Create the IoT Analytics Data Store for your pipeline
 
 1. Navigate to the **AWS IoT Analytics** console.
 2. In the left navigation pane, navigate to **Data stores**
 3. **Create** a new data store
-4. **ID:** iotastore
-5. **Choose the Storage Type:** Customer Managed S3 Bucket, and choose your Data Store S3 bucket created in the previous step.
-7. **IAM Role:** Create New, and give your new IAM Role a name. This will give IoT Analytics the correct IAM policies to access your S3 bucket.
-8. Click 'Next' and then 'Create data store'
+    * **ID:** iotastore
+    * **Choose the Storage Type:** Customer Managed S3 Bucket, and choose your Data Store S3 bucket created in the previous step.
+    * **IAM Role:** Create New, and give your new IAM Role a name. This will give IoT Analytics the correct IAM policies to access your S3 bucket.
+4. Click 'Next' and then **'Create data store'**
 
 ### Create the IoT Analytics Pipeline
 
 1. Navigate to the **AWS IoT Analytics** console.
 2. In the left navigation pane, navigate to **Pipelines**
 3. **Create** a new Pipeline:
-   4. **ID:** streampipeline
-   5. **Pipeline source**: streamchannel
+   * **ID:** streampipeline
+   * **Pipeline source**: streamchannel
 6. Click **Next**
 7. IoT Analytics will automatically parse the data coming from your channel and list the attributes from your simulated device. By default, all messages are selected.
 8. Click **Next**
 9. Under 'Pipeline activites' you can trasform the data in your pipeline, add, or remove attributes
-   10. Click **Add Activity** and choose **Calculate a message attribute** as the type.
-   11. **Attribute Name:** cost
-   12. **Formula:** (sub_metering_1 + sub_metering_2 + sub_metering_3) * 1.5
+10. Click **Add Activity** and choose **Calculate a message attribute** as the type.
+   * **Attribute Name:** cost
+   * **Formula:** (sub_metering_1 + sub_metering_2 + sub_metering_3) * 1.5
 13. Test your formula by clicking **Update preview** and the cost attribute will appear in the message payload below.
 14. Add a second activity by clicking **Add activity** and **Remove attributes from a message**
-   15. **Attribute Name:** _id_ and click 'Next'
+   * **Attribute Name:** _id_ and click 'Next'
 16. Click **Update preview** and the _id_ attribute will dissappear from the message payload.
 17. Click 'Next'
 18. **Pipeline output:** Click 'Edit' and choose 'iotastore'
