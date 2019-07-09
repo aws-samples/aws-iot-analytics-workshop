@@ -125,9 +125,19 @@ In this section we will create the IoT Analytics components, analyze data and de
 
 ### Create your IoT Analytics S3 Storage Buckets
 
-//TODO
+First you will need to create 3 S3 buckets, one for your IoT Analytics channel, one for the data store that holds your transformed data, and one for the data set that is resulted from an IoT Analytics SQL query.
+
+1. Navigate to the **S3 Management Console**
+2. Choose **Create Bucket**
+    * **Bucket name:** Give your bucket a unique name (must be globally unique) and append it with '-channel'. For example: 'my-iot-analytics-channel'.
+    * **Region:** The region should be the same as where you launched the Device Simulator Cloud Formation template.
+3. Click **Next** and keep all options default. Click on **Create bucket** to finish the creation.
+4. Repeat steps 1-32 twice more to finish creating the required buckets. Use the appendices '-datastore' and '-dataset' to differentiate the buckets.
+
 
 ### Create the IoT Analytics Channel
+
+Next we will create the IoT Analytics channel that will consume data from the IoT Core broker and store the data into your S3 bucket.
 
 1. Navigate to the **AWS IoT Analytics** console.
 2. In the left navigation pane, navigate to **Channels**
