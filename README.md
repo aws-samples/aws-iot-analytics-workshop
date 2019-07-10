@@ -214,7 +214,7 @@ In this section, you will learn how to use IoT Analytics to extract insights fro
     * **S3 bucket:** select the S3 bucket that ends with '-dataset'
 13. Click **Create data set** to finalise the creation of the data set.
 
-### Execute the dataset
+### Execute and save the dataset
 
 1. Navigate to **Data sets** on the lefthand navigation pane of the AWS IoT Analytics console.
 2. Click on 'streamdataset'
