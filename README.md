@@ -134,6 +134,41 @@ First you will need to create 3 S3 buckets, one for your IoT Analytics channel, 
 3. Click **Next** and keep all options default. Click on **Create bucket** to finish the creation.
 4. Repeat steps 1-3 twice more to finish creating the required buckets. Use the appendices '-datastore' and '-dataset' to differentiate the buckets.
 
+You will also need to give appropriate permissions to IoT Analytics to access your Data Store bucket.
+1. Navigate to the **S3 Management Console**
+2. Click on your data store bucket ending with '-datastore'.
+3. Navigate to the **Permissions** tab
+4. Click on **Bucket Policy** and enter the following JSON policy:
+```
+{
+    "Version": "2012-10-17",
+    "Id": "IoTADataStorePolicy",
+    "Statement": [
+        {
+            "Sid": "IoTADataStorePolicyID",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "iotanalytics.amazonaws.com"
+            },
+            "Action": [
+                "s3:GetBucketLocation",
+                "s3:GetObject",
+                "s3:ListBucket",
+                "s3:ListBucketMultipartUploads",
+                "s3:ListMultipartUploadParts",
+                "s3:AbortMultipartUpload",
+                "s3:PutObject",
+                "s3:DeleteObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::<your bucket name here>",
+                "arn:aws:s3:::<your bucket name here>/*"
+            ]
+        }
+    ]
+}
+```
+5.  Click **Save**
 
 ### Create the IoT Analytics Channel
 
@@ -240,21 +275,31 @@ Before launching the CloudFormation, you will need an SSH key pair to log into t
 2. Click on **Key Pairs**
 3. Click on **Create Key Pair** and input a name.
 4. Save the .pem file in a directory accessible on your computer.
+5. If you are running Mac or Linux, set the appropriate permissions on the keypair:
+    * ``chmod 400 myec2keypair.pem``
+    
+6. Launch the CloudFormation stack:
+    *   [Launch CloudFormation stack in us-east-1](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?stackName=IoTAnalyticsStack&templateURL=https://s3.amazonaws.com/iotareinvent18/iota-reinvent-cfn-east.json) (N. Virginia)
+    *   [Launch CloudFormation stack in us-west-2](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/create/review?stackName=IoTAnalyticsStack&templateURL=https://s3.amazonaws.com/iotareinvent18/iota-reinvent-cfn-west.json) (Oregon)
+    *   [Launch CloudFormation stack in us-east-2](https://console.aws.amazon.com/cloudformation/home?region=us-east-2#/stacks/create/review?stackName=IoTAnalyticsStack&templateURL=https://s3.amazonaws.com/iotareinvent18/iota-reinvent-cfn-east-2.json) (Ohio)
+    *   [Launch CloudFormation stack in eu-west-2](https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/create/review?stackName=IoTAnalyticsStack&templateURL=https://s3.amazonaws.com/iotareinvent18/iota-reinvent-cfn-west-2.json) (Ireland)
 
-*   [Launch CloudFormation stack in us-east-1](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?stackName=IoTAnalyticsStack&templateURL=https://s3.amazonaws.com/iotareinvent18/iota-reinvent-cfn-east.json) (N. Virginia)
-*   [Launch CloudFormation stack in us-west-2](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/create/review?stackName=IoTAnalyticsStack&templateURL=https://s3.amazonaws.com/iotareinvent18/iota-reinvent-cfn-west.json) (Oregon)
-*   [Launch CloudFormation stack in us-east-2](https://console.aws.amazon.com/cloudformation/home?region=us-east-2#/stacks/create/review?stackName=IoTAnalyticsStack&templateURL=https://s3.amazonaws.com/iotareinvent18/iota-reinvent-cfn-east-2.json) (Ohio)
-*   [Launch CloudFormation stack in eu-west-2](https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/create/review?stackName=IoTAnalyticsStack&templateURL=https://s3.amazonaws.com/iotareinvent18/iota-reinvent-cfn-west-2.json) (Ireland)
+After you have been redirected to the AWS CloudFormation console, take the following steps to launch the CloudFormation stack:
 
-After you have been redirected to the AWS CloudFormation console take the following steps to launch you stack:
+1. Navigate to **Parameters**
+    * **SSHKeyName** - select the SSH key pair you will use to login to the EC2 instance.
+2. Check the box "I acknowledge that AWS CloudFormation might create IAM resources."
+3. Click **Create stack**
 
-    1. Parameters
-    2. Select SSHKeyName
-    3. Capabilities -> check "I acknowledge that AWS CloudFormation might create IAM resources." at the bottom of the page
-    4. Create
-    5. Wait until the complete stack is created 
+The CloudFormation stack will take approximately 5-7 minutes to complete launching all the necessary resources.
 
-The Cloudformation will take 5-7 mins to complete. In the **Outputs** section of your CloudFormation stack you will find the **ssh login string** for your EC2 instance.
+Once the CloudFormation has completed, navigate to the **Outputs** tab, and see the **SSHLogin** parameter. Copy this string to use when SSHing to the EC2 instance.
+
+### Setup the docker image on EC2
+
+1. SSH to the EC2 instance using the SSHLogin string copied from the above step.
+    * Example: ``ssh -i Iotaworkshopkeypair.pem ec2-user@ec2-my-ec2-instance.eu-west-1.compute.amazonaws.com``
+    
 
 #### Create the docker image -
 
