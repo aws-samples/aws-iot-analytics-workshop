@@ -132,7 +132,7 @@ First you will need to create 3 S3 buckets, one for your IoT Analytics channel, 
     * **Bucket name:** Give your bucket a unique name (must be globally unique) and append it with '-channel'. For example: 'my-iot-analytics-channel'.
     * **Region:** The region should be the same as where you launched the Device Simulator Cloud Formation template.
 3. Click **Next** and keep all options default. Click on **Create bucket** to finish the creation.
-4. Repeat steps 1-32 twice more to finish creating the required buckets. Use the appendices '-datastore' and '-dataset' to differentiate the buckets.
+4. Repeat steps 1-3 twice more to finish creating the required buckets. Use the appendices '-datastore' and '-dataset' to differentiate the buckets.
 
 
 ### Create the IoT Analytics Channel
@@ -145,7 +145,11 @@ Next we will create the IoT Analytics channel that will consume data from the Io
     * **ID:** streamchannel
     * **Choose the Storage Type:** Customer Managed S3 Bucket, and choose your Channel S3 bucket created in the previous step.
     * **IAM Role:** Create New, and give your new IAM Role a name. This will give IoT Analytics the correct IAM policies to access your S3 bucket.
-7. Click 'Next' and then **Create Channel**
+7. Click '**Next**' and input the following.  This step will create an IoT Rule that consumes data on the specified topic.
+    * **IoT Core topic filter:** 'smartbuilding/topic' 
+    * **IAM Role:** Create New, and give your new IAM Role a name. This will give IoT Analytics the correct IAM policies to access your AWS IoT Core topic.
+    * Click on **See messages** to see the messages from your smartbuilding device arriving on the topic. Ensure your device is still running in Device Simulator if you do not see any messages.
+8. Click **Create Channel**
 
 ### Create the IoT Analytics Data Store for your pipeline
 
@@ -162,19 +166,19 @@ Next we will create the IoT Analytics channel that will consume data from the Io
 1. Navigate to the **AWS IoT Analytics** console.
 2. In the left navigation pane, navigate to **Pipelines**
 3. **Create** a new Pipeline:
-   * **ID:** streampipeline
-   * **Pipeline source**: streamchannel
+    * **ID:** streampipeline
+    * **Pipeline source**: streamchannel
 6. Click **Next**
 7. IoT Analytics will automatically parse the data coming from your channel and list the attributes from your simulated device. By default, all messages are selected.
 8. Click **Next**
 9. Under 'Pipeline activites' you can trasform the data in your pipeline, add, or remove attributes
 10. Click **Add Activity** and choose **Calculate a message attribute** as the type.
-   * **Attribute Name:** cost
-   * **Formula:** ``(sub_metering_1 + sub_metering_2 + sub_metering_3) * 1.5``
+     * **Attribute Name:** cost
+     * **Formula:** ``(sub_metering_1 + sub_metering_2 + sub_metering_3) * 1.5``
 13. Test your formula by clicking **Update preview** and the cost attribute will appear in the message payload below.
 14. Add a second activity by clicking **Add activity** and **Remove attributes from a message**
-   * **Attribute Name:** _id_ and click 'Next'
-16. Click **Update preview** and the _id_ attribute will dissappear from the message payload.
+     * **Attribute Name:** _id_ and click 'Next'
+16. Click **Update preview** and the _id_ attribute will disappear from the message payload.
 17. Click 'Next'
 18. **Pipeline output:** Click 'Edit' and choose 'iotastore'
 19. Click **Create Pipeline** 
