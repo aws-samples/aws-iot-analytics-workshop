@@ -299,26 +299,22 @@ Once the CloudFormation has completed, navigate to the **Outputs** tab, and see 
 
 1. SSH to the EC2 instance using the SSHLogin string copied from the above step.
     * Example: ``ssh -i Iotaworkshopkeypair.pem ec2-user@ec2-my-ec2-instance.eu-west-1.compute.amazonaws.com``
-    
-
-#### Create the docker image -
-
-    1. ssh to docker instance : 
-        a. cd /home/ec2-user/docker-setup
-    2. Build the docker image : (Don't miss the dot at the end)
-        a. docker build -t container-app-ia .
-    3. You should see a new image in your Docker repo. Verify it by running:
-        a. docker image ls | grep container-app-ia
-    4. Create a new repository in ECR:
-        a.aws ecr create-repository --repository-name container-app-ia
-        b.Copy the repositoryUri in text editor for use in step 6 & 7 
-    5. Login to your Docker environment: (Dont miss the Tilda)
-        a. `aws ecr get-login --no-include-email`
-    6. Tag the image you created with the ECR Repository Tag:
-        a. docker tag container-app-ia:latest paste-repositoryUri-copied-in-step4:latest
-    7. Push the image to ECR
-        a. docker push "paste-repositoryUri-copied-in-step4"
-    
+2. Update your EC2 instance:
+    * ``sudo yum update``
+3. Build the docker image:
+    * ``docker build -t container-app-ia .``
+4. Veryify the image is running:
+    * ``docker image ls | grep container-app-ia``
+    * You should see an output similar to: ``container-app-ia    latest              ad81fed784f1        2 minutes ago      534MB``
+5. Create a new repository in Amazon Elastic Container Registry (ECR) using the AWS CLI (pre-built on your EC2 instance):
+    * ``aws ecr create-repository --repository-name container-app-ia``
+    * The output should include a JSON object which includes the item 'repositoryURI'. Copy this value into a text editor for later use.
+6. Login to your Docker environment:
+    * `aws ecr get-login --no-include-email`
+7. Tag the Docker image with the ECR Repository URI:
+    * `docker tag container-app-ia:latest <your repostoryUri here>:latest`
+8. Push the image to ECR
+    * `docker push <your repositoryUri here>`
 
 \[[Top](#Top)\]
 
