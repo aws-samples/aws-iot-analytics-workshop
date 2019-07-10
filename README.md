@@ -208,8 +208,11 @@ In this section, you will learn how to use IoT Analytics to extract insights fro
     * **Data selection window:** Delta time
     * **Offset:** -5 Seconds
     * **Timestamp expression:** ``from_iso8601_timestamp(timestamp)``
-12. Choose **Next**
-13. The rest of the options can remain as default. Click **Next** and then **Create data set**
+12. Keep all other options as default and click **Next** until you reach 'Configure the delivery rules of your analytics results'
+13. Click **Add rule**
+14. Choose **Deliver result to S3**
+    * **S3 bucket:** select the S3 bucket that ends with '-dataset'
+13. Click **Create data set** to finalise the creation of the data set.
 
 ### Execute the dataset
 
@@ -217,7 +220,7 @@ In this section, you will learn how to use IoT Analytics to extract insights fro
 2. Click on 'streamdataset'
 3. Click on **Actions** and in the dropdown menu choose **Run now**
 4. On the left navigation menu, choose **Content** and monitor the status of your data set creation.
-5. The results will be shown in the preview pane.
+5. The results will be shown in the preview pane and saved as a .csv in the '-dataset' S3 bucket.
     
 
 \[[Top](#Top)\]
