@@ -44,7 +44,7 @@ To conduct the workshop you will need the following tools/setup/knowledge:
 
 ![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
-## Step 1a: Build the Streaming workflow
+## Step 1a: Build the Streaming data workflow
 
 ### Launch AWS IoT Device Simulator with CloudFormation
 
@@ -189,7 +189,7 @@ Your IoT Analytics pipeline is now set up.
 
 ## Step 1c: Analyse the data
 
-In this section, you will learn how to use IoT Analytics to extract insights from your data set using SQL.
+In this section, you will learn how to use IoT Analytics to extract insights from your data set using SQL over a specified time period.
 
 ![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
@@ -225,12 +225,9 @@ In this section, you will learn how to use IoT Analytics to extract insights fro
 
 \[[Top](#Top)\]
 
-Build Batch Workflow
-------------------------
+## Step 2a: Build the Batch analytics workflow
 
-In this section we will load the public dataset in batch from S3 to IoT Analytics data store using containers.
-
-### What you will learn: Step 2a.
+In this section we will a public dataset in batch from S3 to IoT Analytics data store using containers.
 
 ![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
@@ -238,11 +235,11 @@ In this section we will load the public dataset in batch from S3 to IoT Analytic
 
 By choosing one of the links below you will be automatically redirected to the CloudFormation section of the AWS Console where your stack will be launched.
 
-#### Prior to launch the CloudFormation stack you need to have:
-
-*   An ssh key pair to log into the EC2 instance. If you don't have an ssh key pair you can create one in the EC2 console -> Key pairs
-
-* * *
+Before launching the CloudFormation, you will need an SSH key pair to log into the EC2 instance. If you don't have an SSH key pair you can create one by:
+1. Navigating to the **EC2 console**
+2. Click on **Key Pairs**
+3. Click on **Create Key Pair** and input a name.
+4. Save the .pem file in a directory accessible on your computer.
 
 *   [Launch CloudFormation stack in us-east-1](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?stackName=IoTAnalyticsStack&templateURL=https://s3.amazonaws.com/iotareinvent18/iota-reinvent-cfn-east.json) (N. Virginia)
 *   [Launch CloudFormation stack in us-west-2](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/create/review?stackName=IoTAnalyticsStack&templateURL=https://s3.amazonaws.com/iotareinvent18/iota-reinvent-cfn-west.json) (Oregon)
