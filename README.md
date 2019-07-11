@@ -262,16 +262,16 @@ In this section, you will learn how to use IoT Analytics to extract insights fro
 
 ## Step 2a: Build the Batch analytics workflow
 
-In this section we will a public dataset in batch from S3 to IoT Analytics data store using containers.
+In this section we will create an EC2 instance and docker image to batch a public dataset from S3 to an IoT Analytics data store using containers.
 
 ![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
-### Launch Docker Instance with CloudFormation
+### Launch Docker EC2 Instance with CloudFormation
 
 By choosing one of the links below you will be automatically redirected to the CloudFormation section of the AWS Console where your stack will be launched.
 
 Before launching the CloudFormation, you will need an SSH key pair to log into the EC2 instance. If you don't have an SSH key pair you can create one by:
-1. Navigating to the **EC2 console**
+1. Navigate to the **EC2 console**
 2. Click on **Key Pairs**
 3. Click on **Create Key Pair** and input a name.
 4. Save the .pem file in a directory accessible on your computer.
@@ -299,59 +299,65 @@ Once the CloudFormation has completed, navigate to the **Outputs** tab, and see 
 
 1. SSH to the EC2 instance using the SSHLogin string copied from the above step.
     * Example: ``ssh -i Iotaworkshopkeypair.pem ec2-user@ec2-my-ec2-instance.eu-west-1.compute.amazonaws.com``
-2. Update your EC2 instance:
+2. Move to the docker-setup folder
+    * ``cd /home/ec2-user/docker-setup``
+3. Update your EC2 instance:
     * ``sudo yum update``
-3. Build the docker image:
+4. Build the docker image:
     * ``docker build -t container-app-ia .``
-4. Veryify the image is running:
+5. Veryify the image is running:
     * ``docker image ls | grep container-app-ia``
     * You should see an output similar to: ``container-app-ia    latest              ad81fed784f1        2 minutes ago      534MB``
-5. Create a new repository in Amazon Elastic Container Registry (ECR) using the AWS CLI (pre-built on your EC2 instance):
+6. Create a new repository in Amazon Elastic Container Registry (ECR) using the AWS CLI (pre-built on your EC2 instance):
     * ``aws ecr create-repository --repository-name container-app-ia``
     * The output should include a JSON object which includes the item 'repositoryURI'. Copy this value into a text editor for later use.
-6. Login to your Docker environment:
-    * `aws ecr get-login --no-include-email`
-7. Tag the Docker image with the ECR Repository URI:
+7. Login to your Docker environment _(you need the \` for the command to work)_:
+    * `` `aws ecr get-login --no-include-email` ``
+8. Tag the Docker image with the ECR Repository URI:
     * `docker tag container-app-ia:latest <your repostoryUri here>:latest`
-8. Push the image to ECR
+9. Push the image to ECR
     * `docker push <your repositoryUri here>`
 
 \[[Top](#Top)\]
 
-Create Batch Analytics Pipeline
--------------------------------
-
-### What you will learn: Step 2b.
+## Step 2b: Create Batch Analytics Pipeline
 
 ![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
-In this section we will create the IoT Analytics components, analyze data and define different pipeline activities.
+In this section we will create the IoT Analytics pipeline for your public data-set, analyze data and define different pipeline activities.
 
-**Go to the AWS IoT Analytics console**
+### Create the IoT Analytics Channel
 
-    Create Channel - 
-      
-      On the AWS IoT Analytics console home page, in the left navigation pane, choose Prepare -> Channels :
-          a. Click Create
-          b. Channel ID - batchchannel (Keep all other options deafault , click Next)
-          c. IoT Core topic filter - keep it blank
-          d. Create Channel
-      
-      Create Pipeline - 
-      On the AWS IoT Analytics console home page, in the left navigation pane, choose Prepare -> Pipeline :
-          a. Click Create
-          b. Pipeline ID - batchpipeline
-          c. pipeline source - batchchannel, Click Next
-          d. Set attributes of messages - You WON'T See any incoming messsages here -> Click Next
-          e. Add activity - Calculate a message attribute 
-              i. Attribute Name : cost
-              ii.Formula : (sub_metering_1 + sub_metering_2 + sub_metering_3) * 1.5
-              Click Next
-          f. Pipeline output -  Select iotastore
-          g. Click Create pipeline
-      
+Next we will create the IoT Analytics channel that will consume data from the IoT Core broker and store the data into your S3 bucket.
 
-Now we have created the IoT Analytics Pipeline lets load the batch data.
+1. Navigate to the **AWS IoT Analytics** console.
+2. In the left navigation pane, navigate to **Channels**
+3. **Create** a new channel
+    * **ID:** batchchannel
+    * **Choose the Storage Type:** Service-managed store - in this step we will use an IoT Analytics managed S3 bucket, but you may specify a customer-managed bucket as in Step 1b if you wish.
+4. **IoT Core topic filter:** Leave this blank, as the data source for this channel will not be from AWS IoT Core.
+5. Leave all other options as default and click **Next**.
+6. Click **Create Channel**
+
+### Create the IoT Analytics Pipeline
+
+1. Navigate to the **AWS IoT Analytics** console.
+2. In the left navigation pane, navigate to **Pipelines**
+3. **Create** a new Pipeline:
+    * **ID:** batchpipeline
+    * **Pipeline source**: batchchannel
+4. Click **Next**
+5. **See attributes of messages:** You will not see any data on this screen, as the data source has not been fully configured yet.
+6. Click **Next**
+7. Under 'Pipeline activites' you can trasform the data in your pipeline, add, or remove attributes
+8. Click **Add Activity** and choose **Calculate a message attribute** as the type.
+     * **Attribute Name:** cost
+     * **Formula:** ``(sub_metering_1 + sub_metering_2 + sub_metering_3) * 1.5``
+9. Click 'Next'
+10. **Pipeline output:** Click 'Edit' and choose 'iotastore'
+11. Click **Create Pipeline** 
+      
+Now we have created the IoT Analytics Pipeline, we can load the batch data.
 
 #### Create Container Data Set
 
