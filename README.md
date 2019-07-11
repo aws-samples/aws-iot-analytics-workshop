@@ -377,6 +377,7 @@ A container data set allows you to automatically run your analysis tools and gen
     * **Select your custom analysis container from Elastic Container Registry:** container-app-ia
     * **Select your image:** latest
 8. Under **Configure the input variables of your container** add the following variables which will be passed to your Docker container and the Python script running in the instance:
+
 | Name                  | Type   | Value          |
 |-----------------------|--------|----------------|
 | inputDataS3BucketName | String | iotaworkshop   |
