@@ -376,13 +376,12 @@ A container data set allows you to automatically run your analysis tools and gen
     * Choose **Select from your Elastic Container Registry repository**
     * **Select your custom analysis container from Elastic Container Registry:** container-app-ia
     * **Select your image:** latest
-8. Under **Configure the input variables of your container** add the following variables which will be passed to your Dockerc container and the Python script running in the instance:
-
-         | Name                  | Type   | Value          |
-         |-----------------------|--------|----------------|
-         | inputDataS3BucketName | String | iotaworkshop   |
-         | inputDataS3Key        | String | inputdata.csv  |
-         | iotchannel            | String | batchchannel   |
+8. Under **Configure the input variables of your container** add the following variables which will be passed to your Docker container and the Python script running in the instance:
+| Name                  | Type   | Value          |
+|-----------------------|--------|----------------|
+| inputDataS3BucketName | String | iotaworkshop   |
+| inputDataS3Key        | String | inputdata.csv  |
+| iotchannel            | String | batchchannel   |
 
 9. Click **Next**
 10. Under **IAM Role**, click **Edit** and add the role iotAContainerRole. This role was created as part of the CloudFormation stack.
@@ -405,39 +404,6 @@ A container data set allows you to automatically run your analysis tools and gen
 
     It can take 5-7 minutes for the data set to complete. If no errors, it will show SUCCEEDED under the name of the data set in the upper left-hand corner. 
     If it fails , check the Troubleshooting section or call Support Staff.
-
-
-
-     
-    1. Click on Analyze -> Data Sets → Create
-    2. Choose Container Data Sets → Create Container 
-    3. Choose a unique ID for the Container Data Set → container_dataset, click Next
-    4. Choose the option - >  Create an analysis without a dataset -> Create
-    5. Frequency → Keep default (Not scheduled) -> Click Next
-    6. Select from your  ECR Repository → Choose the repository container-app-ia
-    7. Select your image → Choose the image with *latest* tag
-    8. Configure the input variables (as below) -> Click Next
-    
-         | Name                  | Type   | Value          |
-         |-----------------------|--------|----------------|
-         | inputDataS3BucketName | String | iotareinvent18 |
-         | inputDataS3Key        | String | inputdata.csv  |
-         | iotchannel            | String | batchchannel   |
-           
-    9. Select a Role → Choose the IAM Role → search & select iotAContainerRole
-    10. Configure the capacity for container :
-        Compute Resource : 4 vCPUs and 16 GiB Memory
-        Volume size (GB) : 2
-    11. Configure the retention of your results → Keep its default and Click on Create Data set
-    
-    Navigate to the IoT Analytics console home page,  in the left navigation pane, choose Analyze.
-    
-    12. Click on Data Set → container_dataset 
-    13. On the data set page, in the upper-right corner, choose Actions, and then choose Run now
-    
-    It can take 5-7 minutes for the data set to complete. If no errors, it will show SUCCEEDED under the name of the data set in the upper left-hand corner. 
-    If it fails , check the Troubleshooting section or call Support Staff.
-    
 
 \[[Top](#Top)\]
 
