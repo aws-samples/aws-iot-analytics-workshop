@@ -363,7 +363,53 @@ Now we have created the IoT Analytics Pipeline, we can load the batch data.
 
 A container data set allows you to automatically run your analysis tools and generate results. It brings together a SQL data set as input, a Docker container with your analysis tools and needed library files, input and output variables, and an optional schedule trigger. The input and output variables tell the executable image where to get the data and store the results.
 
-Navigate to AWS IoT Analytics console, in the left navigation pane, choose Analyze.
+1. Navigate to the **IoT Analytics Console**
+2. Click on **Data sets** on the left-hand navigation pane
+3. **Create** a new data set.
+4. Choose **Create Container** next to **Container data sets**.
+    * **ID**: container_dataset
+5. Click **Next**
+6. Click **Create** next to **Create an analysis without a data set**
+    * **Frequency**: Not scheduled
+    * Click **Next**
+7. **Select analysis container and map variables**
+    * Choose **Select from your Elastic Container Registry repository**
+    * **Select your custom analysis container from Elastic Container Registry:** container-app-ia
+    * **Select your image:** latest
+8. Under **Configure the input variables of your container** add the following variables which will be passed to your Dockerc container and the Python script running in the instance:
+
+         | Name                  | Type   | Value          |
+         |-----------------------|--------|----------------|
+         | inputDataS3BucketName | String | iotaworkshop   |
+         | inputDataS3Key        | String | inputdata.csv  |
+         | iotchannel            | String | batchchannel   |
+
+9. Click **Next**
+10. Under **IAM Role**, click **Edit** and add the role iotAContainerRole. This role was created as part of the CloudFormation stack.
+11. Configure the resources for container execution:
+     * **Compute Resource**: 4 vCPUs and 16 GiB Memory
+     * **Volume Size (GB)**: 2
+12. Click **Next**
+13. Under **Configure the results of your analytics**, keep all options as default.
+14. Click **Next**
+15. Under **Configure delivery rules for analysis results** select **Add rule**
+     * Select **Deliver result to S3**
+     * **Content delivery name**: batch-data
+     * **S3 Bucket**: Choose the bucket that ends with '-dataset' that you created earlier in the workshop.
+     * **IAM Role**: Create New and give your role a unique ID
+16. Finalize the creation of the data-set by clicking **Create data set**
+
+    1. Configure the retention of your results → Keep its default and Click on Create Data set
+
+    Navigate to the IoT Analytics console home page,  in the left navigation pane, choose Analyze.
+
+    1. Click on Data Set → container_dataset 
+    2. On the data set page, in the upper-right corner, choose Actions, and then choose Run now
+
+    It can take 5-7 minutes for the data set to complete. If no errors, it will show SUCCEEDED under the name of the data set in the upper left-hand corner. 
+    If it fails , check the Troubleshooting section or call Support Staff.
+
+
 
      
     1. Click on Analyze -> Data Sets → Create
