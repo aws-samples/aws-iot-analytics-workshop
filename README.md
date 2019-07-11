@@ -392,11 +392,8 @@ A container data set allows you to automatically run your analysis tools and gen
 12. Click **Next**
 13. Under **Configure the results of your analytics**, keep all options as default.
 14. Click **Next**
-15. Under **Configure delivery rules for analysis results** select **Add rule**
-     * Select **Deliver result to S3**
-     * **Content delivery name**: batch-data
-     * **S3 Bucket**: Choose the bucket that ends with '-dataset' that you created earlier in the workshop.
-     * **IAM Role**: Create New and give your role a unique ID
+15. Leave **Configure delivery rules for analysis results** as default and click **Next**.
+     * On this menu you can configure the data set to be delivered to an S3 bucket if you wish.
 16. Finalize the creation of the data-set by clicking **Create data set**
 
     1. Configure the retention of your results → Keep its default and Click on Create Data set
