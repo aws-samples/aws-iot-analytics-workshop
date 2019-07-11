@@ -359,7 +359,7 @@ Next we will create the IoT Analytics channel that will consume data from the Io
       
 Now we have created the IoT Analytics Pipeline, we can load the batch data.
 
-#### Create Container Data Set
+### Create Container Data Set
 
 A container data set allows you to automatically run your analysis tools and generate results. It brings together a SQL data set as input, a Docker container with your analysis tools and needed library files, input and output variables, and an optional schedule trigger. The input and output variables tell the executable image where to get the data and store the results.
 
@@ -380,7 +380,7 @@ A container data set allows you to automatically run your analysis tools and gen
 
 | Name                  | Type   | Value          |
 |-----------------------|--------|----------------|
-| inputDataS3BucketName | String | iotaworkshop   |
+| inputDataS3BucketName | String | iotareinvent18 |
 | inputDataS3Key        | String | inputdata.csv  |
 | iotchannel            | String | batchchannel   |
 
@@ -396,15 +396,12 @@ A container data set allows you to automatically run your analysis tools and gen
      * On this menu you can configure the data set to be delivered to an S3 bucket if you wish.
 16. Finalize the creation of the data-set by clicking **Create data set**
 
-    1. Configure the retention of your results → Keep its default and Click on Create Data set
-
-    Navigate to the IoT Analytics console home page,  in the left navigation pane, choose Analyze.
-
-    1. Click on Data Set → container_dataset 
-    2. On the data set page, in the upper-right corner, choose Actions, and then choose Run now
-
-    It can take 5-7 minutes for the data set to complete. If no errors, it will show SUCCEEDED under the name of the data set in the upper left-hand corner. 
-    If it fails , check the Troubleshooting section or call Support Staff.
+### Execute the data set
+1. Navigate to the **AWS IoT Analytics console**
+2. In the left navigation pane, navigate to **Data sets**
+3. Click on **container_dataset**
+4. Choose **Actions** and **Run Now**
+5. The container dataset can take up to 10 minutes to run. If there are no errors, you will see a **SUCCEEDED** message. If it fails with an error, please see the Troubleshooting section below to enable logging.
 
 \[[Top](#Top)\]
 
