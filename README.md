@@ -541,33 +541,35 @@ In order to prevent incurring additonal charges, please clean up the resources c
 
 \[[Top](#Top)\]
 
-Troubleshooting
----------------
+## Troubleshooting
 
-**Troubleshooting for IoT Core issues. Go to the AWS IoT Core console**
+To aide in troubleshooting, you can enable logs for IoT Core and IoT Analytics that can be viewed in **AWS CloudWatch**.
 
-    1. Get started (only if no resources are provisioned)
-    2. Click upgrade to JSON logging if prompted
-    3. Click on Settings in left pane
-    4. Logs (if DISABLED) -> Edit
-    5. Change "Disable Logging" to "Debug (most verbose)"
-    6. Set role -> Create New -> iotcoreloggingrole
-    7. Update
+### AWS IoT Core
 
+1. Navigate to the **AWS IoT Core** console
+2. Click on **Settings** in the left-hand pane
+3. Under **Logs**, click on **Edit**
+   * **Level of verbosity**: Debug (most verbose)
+   * **Set role**: Click **Create New**
+   * **Name:** iotcoreloggingrole
+   
 The log files from AWS IoT are send to **Amazon CloudWatch**. The AWS console can be used to look at these logs.
 
 For additional troubleshooting, refer to here [IoT Core Troubleshooting](https://docs.aws.amazon.com/iot/latest/developerguide/iot_troubleshooting.html)
 
 \[[Top](#Top)\]
 
-**Troubleshooting for IoT Analytics issues. Go to the AWS IoT Analytics console**
+## AWS IoT Analytics
 
-    1. Get started (only if no resources are provisioned)
-    2. Click on Settings in left pane
-    3. Logs (if DISABLED) -> Edit
-    4. Change "Disable Logging" to "Error"
-    5. Set role -> Create new -> iotanalyticsloggingrole -> Create Role
-    6. Update 
+1. Navigate to the **AWS IoT Analytics** console
+2. Click on **Settings** in the left-hand pane
+3. Under **Logs**, click on **Edit**
+   * **Level of verbosity**: Debug (most verbose)
+   * **Set role**: Click **Create New**
+   * **Name:** iotanalyticsloggingrole
+   * **Create role**
+4. Click on **Update**
 
 The log files from AWS IoT Analytics will be send to **Amazon CloudWatch**. The AWS console can be used to look at these logs.
 
