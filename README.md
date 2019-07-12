@@ -5,10 +5,10 @@ In this workshop, you will learn about the different components of AWS IoT Analy
 ## Table of Contents
 
 *   [Prerequisites](#prerequisites)
-*   [Solution Architecture Overview](##solution-architecture-overview)
-*   [Step 1a: Build the Streaming data workflow](##step-1a-build-the-streaming-data-workflow)
+*   [Solution Architecture Overview](#solution-architecture-overview)
+*   [Step 1a: Build the Streaming data workflow](#step-1a-build-the-streaming-data-workflow)
 *   [Step 1b: Create Stream Analytics Pipeline](#step-1b-create-stream-analytics-pipeline)
-*   [Step 1c: Analyse the data](##step-1c-analyse-the-data)
+*   [Step 1c: Analyse the data](#step-1c-analyse-the-data)
 *   [Step 2a: Build the Batch analytics workflow](#step-2a-build-the-batch-analytics-workflow)
 *   [Step 2b: Create Batch Analytics Pipeline](#step-2b-create-batch-analytics-pipeline)
 *   [Step 2c: Analyse Stream and Batch data](#step-2c-analyse-stream-and-batch-data)
