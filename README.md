@@ -444,39 +444,40 @@ The purpose of the workshop has been to show you how you can use IoT Analytics f
 
 \[[Top](#Top)\]
 
-Bonus section
-=============
-
-### If you have time , and want to go the extra mile, Please complete this section.
-
-Visualize using Quicksight
---------------------------
-
-### What you will learn: Step 3.
+## Step 3: Visualize your data using Quicksight
 
 In this section we will visualize the time series data captured from your smart home.
 
 ![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
-    
-    1. Go to the AWS Quicksight console in North Viriginia region - 
-        a. Enroll for standard edition (if you have not used it before)
-        b. Click on your login user (upper right) -> Manage Quicksight -> Account Settings -> Manage Quicksight Permissions -> Check IoT Analytics -> Apply
-        c. Click on Quicksight logo (upper left) to navigate to home page 
-        d. Change the region to your working region now
-    2. Select New Analysis -> New data set -> Choose AWS IoT Analytics
-    3. Enter Data source name -> smarthome-dashboard
-    4. Select an AWS IoT Analytics dataset to import - batchdataset
-    5. Create data source -> Visualize
-    6. Determine the home energy consumption - 
-        a. Choose the sub_metering_* readings for Value axis (Choose average from Value drop down) 
-        b. Choose timestamp for X axis 
-    
-    The graphs will look similar to below. 
-    
-    Please feel free to play with different fields or visual types for visualizing other smart home related information. 
+### Sign up for AWS Quicksight
+
+If you have used AWS Quicksight in the past, you can skip these steps.
+
+1. Navigate to the **AWS Quicksight** console
+2. If you have never used AWS Quicksight before, you will be asked to sign up. Be sure to choose the 'Standard' tier, and choose the correct region for your locale.
+3. During the sign up phase, give Quicksight access to your Amazon S3 buckets and AWS IoT Analytics via the sign up page.
+
+### Visualise your data set with AWS Quicksight
+
+1. Navige to the **AWS Quicksight** console.
+2. Click on **New analysis**
+3. Click on **New data set**
+4. Choose **AWS IoT Analytics** under FROM NEW DATA SOURCES.
+5. Configure your AWS IoT Analytics data source.
+    * **Data source name**: smarthome-dashboard
+    * **Select an AWS IoT Analytics data set to import**: batchdataset
+6. Click on **Create data source** to finalise the Quicksight dashboard data source configuration. You should see the data has also been imported into SPICE, which is the analytics engine driving AWS Quicksight.
+7. Click on **Visualize** and wait a few moments until you see 'Import complete' in the upper right hand of the console. You should see all 5000 rows have been imported into SPICE.
+8. Under **Fields list** choose 'timestamp' to set the X  axis for the graph.
+9. Click on 'sub_metering_1', 'sub_metering_2' and 'sub_metering_3' to add them to the **Value** column. 
+10. For each sub_metering_value, choose the drop-down menu and set **Aggregate** to **Average**.
+
+The graphs will look similar to below. 
     
 ![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/quicksight.png "Quicksight")
+
+Please feel free to play with different fields or visual types for visualizing other smart home related information. 
 
 \[[Top](#Top)\]
 
