@@ -14,7 +14,8 @@ In this workshop, you will learn about the different components of AWS IoT Analy
 *   [Step 2c: Analyse Stream and Batch data](#step-2c-analyse-stream-and-batch-data)
 *   [Recap and Review - So far](#recap-and-review-what-have-we-done-so-far)
 *   [Step 3: Visualize your data using Quicksight](#step-3-visualize-your-data-using-quicksight)
-*   [Step 4: Machine Learning and Forecasting with Jupyter Notebooks](##step-4-machine-learning-and-forecasting-with-jupyter-notebooks)
+*   [Step 4: Machine Learning and Forecasting with Jupyter Notebooks](#step-4-machine-learning-and-forecasting-with-jupyter-notebooks)
+*   [Recap and Review - What did we learn in this workshop?](#recap-and-review-what-did-we-learn-in-this-workshop)
 *   [Clean up resources in AWS](#clean-up-resources-in-aws)
 *   [Troubleshooting](#troubleshooting)
 
