@@ -560,7 +560,7 @@ For additional troubleshooting, refer to here [IoT Core Troubleshooting](https:/
 
 \[[Top](#Top)\]
 
-## AWS IoT Analytics
+### AWS IoT Analytics
 
 1. Navigate to the **AWS IoT Analytics** console
 2. Click on **Settings** in the left-hand pane
