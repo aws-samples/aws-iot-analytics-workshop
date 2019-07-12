@@ -2,20 +2,20 @@
 
 In this workshop, you will learn about the different components of AWS IoT Analytics. You will configure AWS IoT Core to ingest stream data from the AWS Device Simulator, process batch data using Amazon ECS, build an analytics pipeline using AWS IoT Analytics, visualize the data using Amazon QuickSight, and perform machine learning using Jupyter Notebooks. Join us, and build a solution that helps you perform analytics on appliance energy usage in a smart building and forecast energy utilization to optimize consumption.
 
-## Workshop Agenda
+## Table of Contents
 
 *   [Prerequisites](#prerequisites)
-*   [Let's get started](#lets-get-started)
-*   [Build the Streaming workflow](#build-the-streaming-workflow)
-*   [Connect your Smart Home to AWS IoT Core](#connect-your-smart-home-to-aws-iot-core)
-*   [Create Stream Analytics Pipeline](#create-stream-analytics-pipeline)
-*   [Analyse Stream data](#analyse-stream-data)
-*   [Build Batch Workflow](#build-batch-workflow)
-*   [Create Batch Analytics Pipeline](#create-batch-analytics-pipeline)
-*   [Analyse Stream and Batch data](#analyse-stream-and-batch-data)
-*   [Visualize using Quicksight](#visualize-using-quicksight)
-*   [Perform Forecasting with Jupyter Notebooks](#perform-forecasting-with-jupyter-notebooks)
-*   [Clean Up](#clean-up)
+*   [Solution Architecture Overview](##solution-architecture-overview)
+*   [Step 1a: Build the Streaming data workflow](##step-1a-build-the-streaming-data-workflow)
+*   [Step 1b: Create Stream Analytics Pipeline](#step-1b-create-stream-analytics-pipeline)
+*   [Step 1c: Analyse the data](##step-1c-analyse-the-data)
+*   [Step 2a: Build the Batch analytics workflow](#step-2a-build-the-batch-analytics-workflow)
+*   [Step 2b: Create Batch Analytics Pipeline](#step-2b-create-batch-analytics-pipeline)
+*   [Step 2c: Analyse Stream and Batch data](#step-2c-analyse-stream-and-batch-data)
+*   [Recap and Review - So far](#recap-and-review-what-have-we-done-so-far)
+*   [Step 3: Visualize your data using Quicksight](#step-3-visualize-your-data-using-quicksight)
+*   [Step 4: Machine Learning and Forecasting with Jupyter Notebooks](##step-4-machine-learning-and-forecasting-with-jupyter-notebooks)
+*   [Clean up resources in AWS](#clean-up-resources-in-aws)
 *   [Troubleshooting](#troubleshooting)
 
 ## Prerequisites
