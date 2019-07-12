@@ -411,19 +411,6 @@ A container data set allows you to automatically run your analysis tools and gen
 
 Now that we have two data sets into the same data store, we can analyse the result of combining both the container data and simulated device data.
 
-### Create the combined data set
-
-1. Navigate to the **AWS IoT Analytics console**
-2. In the left navigation pane, navigate to **Data sets**
-    * **ID**: batchdataset
-    * **Select data store source**: iotastore
-3. Click **Next**
-4. **SQL Query**: ``SELECT * FROM iotastore limit 5000``
-5. Click **Next**
-6. Leave the rest of the options as default and click **Next**
-7. Optionally, you can choose to have your dataset be placed into an S3 bucket on the **Configure delivery rules for analysis results** pane.
-8. Click **Create data set**
-
 ### Create and execute the combined data set
 
 1. Navigate to the **AWS IoT Analytics console**
@@ -439,7 +426,6 @@ Now that we have two data sets into the same data store, we can analyse the resu
 9. Click on your newly created **batchdataset**
 10. Click on **Actions** and then **Run now**
 11. The data set will take a few minutes to execute. You should see the results of the executed data set in the result preview, as well as an outputted .csv file which includes the complete data set.
-      
 
 \[[Top](#Top)\]
 
@@ -455,6 +441,8 @@ In the workshop so far you have accomplished the following:
  * Combined that simulated public data analytics workload with the simulated device data to make a meaningful data set.
  
 The purpose of the workshop has been to show you how you can use IoT Analytics for your various data analytics workloads, whether that be from external data sets, a custom analytics workload using external tools, or consuming data directly from IoT devices in real time.
+
+\[[Top](#Top)\]
 
 Bonus section
 =============
