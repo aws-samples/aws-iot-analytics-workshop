@@ -84,7 +84,7 @@ Credentials for the Device Simulator will be mailed to the email address provide
 #### Create the Simulated Device
  1. Navigate to **Modules** -> **Device Types** -> Click **Add Device Type**
     *  **Device Type Name:** smart-home  
-    *  **Data Topic:** smartbuilding/topic  
+    *  **Data Topic:** smarthome/house1/energy/appliances
     *  **Data Transmission Duration:** 7200000  
     * **Data Transmission Interval:** 3000  
     * **Message Payload:** Click **Add Attribute** and add the following attributes:  
@@ -104,7 +104,7 @@ Credentials for the Device Simulator will be mailed to the email address provide
     * Select 'smart-home' as the **Device Type**
     * **Number of widgets:** 1 -> **Submit**
     
- We have now created a simulated smart home device which is collecting power usage data and publishing that data to AWS IoT Core on the 'smartbuilding/topic' topic.
+ We have now created a simulated smart home device which is collecting power usage data and publishing that data to AWS IoT Core on the 'smarthome/house1/energy/appliances' topic.
 
 #### Verify that the data is being published to AWS IoT
 
@@ -113,9 +113,11 @@ Credentials for the Device Simulator will be mailed to the email address provide
 We will verify that the smart home device is configured and publishing data to the correct topic.
  1. From the AWS console, choose the **IoT Core** service
  2. Navigate to **Test** (On the left pane) 
- 3. Under **Subscription**, input **Subscription topic:** 'smartbuilding/topic' and click **Subscribe to topic**
+ 3. Under **Subscription** input the following:
+     * **Subscription topic:** 'smarthome/house1/energy/appliances'
+     * Click **Subscribe to topic**
 
-After a few seconds, you should see your simulated devices's data that is published on the 'smartbuilding/topic' MQTT topic. 
+After a few seconds, you should see your simulated devices's data that is published on the 'smarthome/house1/energy/appliances' MQTT topic. 
 
 \[[Top](#Top)\]
 
@@ -183,7 +185,7 @@ Next we will create the IoT Analytics channel that will consume data from the Io
     * **Choose the Storage Type:** Customer Managed S3 Bucket, and choose your Channel S3 bucket created in the previous step.
     * **IAM Role:** Create New, and give your new IAM Role a name. This will give IoT Analytics the correct IAM policies to access your S3 bucket.
 7. Click '**Next**' and input the following.  This step will create an IoT Rule that consumes data on the specified topic.
-    * **IoT Core topic filter:** 'smartbuilding/topic' 
+    * **IoT Core topic filter:** 'smarthome/house1/energy/appliances' 
     * **IAM Role:** Create New, and give your new IAM Role a name. This will give IoT Analytics the correct IAM policies to access your AWS IoT Core topic.
     * Click on **See messages** to see the messages from your smartbuilding device arriving on the topic. Ensure your device is still running in Device Simulator if you do not see any messages.
 8. Click **Create Channel**
