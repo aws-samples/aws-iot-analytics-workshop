@@ -39,7 +39,8 @@ To conduct the workshop you will need the following tools/setup/knowledge:
     * us-east-2 (Ohio)
     * us-west-2 (Oregon)
     * eu-west-1 (Ireland)
-*   You do not have more than 3 VPCs already deployed in the active region
+*   You do not have more than 3 VPCs already deployed in the active region. In the workshop you will create 2 VPCs, and the limit for VPCs per region is 5.
+*   You do not have more than 3 Elastic IP addresses already deloyed in the active region. In the workshop you will create 2 Elastic IP addresses for the Device Simulator, and the limit of Elastic IPs per region is 5.
 
 ## Solution Architecture Overview:
 
@@ -100,8 +101,8 @@ Credentials for the Device Simulator will be mailed to the email address provide
 
  3. Once the sample message payload shows all the attributes above, click **Save**
  4. Navigate to **Modules** -> **Widgets** -> **Add Widget** 
-    * Select 'smart-home'
-    * **Number of Devices:** 1 -> **Submit**
+    * Select 'smart-home' as the **Device Type**
+    * **Number of widgets:** 1 -> **Submit**
     
  We have now created a simulated smart home device which is collecting power usage data and publishing that data to AWS IoT Core on the 'smartbuilding/topic' topic.
 
@@ -213,7 +214,7 @@ Next we will create the IoT Analytics channel that will consume data from the Io
      * **Formula:** ``(sub_metering_1 + sub_metering_2 + sub_metering_3) * 1.5``
 13. Test your formula by clicking **Update preview** and the cost attribute will appear in the message payload below.
 14. Add a second activity by clicking **Add activity** and **Remove attributes from a message**
-     * **Attribute Name:** _id_ and click 'Next'
+     * **Attribute Name:** _id_ and click 'Next'. The _id_ attribute is a unique identifier coming from the Device Simulator, but adds noise to the data set.
 16. Click **Update preview** and the _id_ attribute will disappear from the message payload.
 17. Click 'Next'
 18. **Pipeline output:** Click 'Edit' and choose 'iotastore'
@@ -242,8 +243,8 @@ In this section, you will learn how to use IoT Analytics to extract insights fro
 8. Keep the default SQL statement, which should read ``SELECT * FROM iotastore`` and click **Next**
 9. Input the folllowing:
     * **Data selection window:** Delta time
-    * **Offset:** -5 Seconds
-    * **Timestamp expression:** ``from_iso8601_timestamp(timestamp)``
+    * **Offset:** -5 Seconds - the 5 second offset is to ensure all 'in-flight' data is included into the data set at time of execution.
+    * **Timestamp expression:** ``from_iso8601_timestamp(timestamp)`` - we need to convert the ISO8601 timestamp coming from the streaming data to a standard timestamp.
 12. Keep all other options as default and click **Next** until you reach 'Configure the delivery rules of your analytics results'
 13. Click **Add rule**
 14. Choose **Deliver result to S3**
@@ -538,7 +539,13 @@ In order to prevent incurring additonal charges, please clean up the resources c
     * Select **container-app-ia** and click **Delete**
 5. Navigate to the **AWS EC2** console
     * Click on **Key Pairs** in the left navigation pane.
-    * Choose the EC2 keypair you created to SSH to your docker instance and click **Delete**.    
+    * Choose the EC2 keypair you created to SSH to your docker instance and click **Delete**.
+6. Navigate to the **S3 Management Console** and delete the following:
+    * The 3 buckets you created in Step 1b ending with '-channel', '-dataset', and '-datastore'
+    * Each bucket with the prefix 'iotdevicesimulator'.
+    * Each bucket with the prefix 'sagemaker-<your region>'
+7. Navigate to the **AWS IoT Analytics** console
+   * Check that all of your pipelines, data sets, and channels have been deleted. If not, you can manually delete them from the console.
 
 \[[Top](#Top)\]
 
