@@ -477,65 +477,67 @@ The graphs will look similar to below.
     
 ![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/quicksight.png "Quicksight")
 
-Please feel free to play with different fields or visual types for visualizing other smart home related information. 
+You can setwith different fields or visual types for visualizing other smart home related information. 
 
 \[[Top](#Top)\]
 
-Perform Forecasting with Jupyter Notebooks
-------------------------------------------
-
-### What you will learn: Step 4.
-
-In this section we will configure the sagemaker instance to forecast energy utilisation at home.
+## Step 4: Machine Learning and Forecasting with Jupyter Notebooks.
 
 ![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
-    
-    1. Go to the AWS IoT Analytics console.
-    2. Select Analyze -> Notebooks -> Create
-    3. Choose Blank Notebook
-    4. Name -> smarthome_notebook
-    5. Select data source -> batchdataset
-    6. Select notebook instance -> IoTAWorkshopSagemaker* (check the name from Cloudformation outputs tab )
-    7. Create Notebook
-    8. Select IoTAWorkshopSagemaker* -> IoTAnalytics -> smarthome_notebook.ipynb -> Open in Jupyter
-    9. Continue without kernel. This will open the Jupyter notebook in sagemaker. 
-    10.Download the Jupyter notebook from here - https://s3.amazonaws.com/iotareinvent18/SmartHomeNotebook.ipynb
-    11.Click File -> Open -> Upload (right top) -> choose Jupyter notebook downloaded in step 10 -> upload
-    12.Choose conda_mxnet_p36 for kernel -> Click set kernel
-    13.Step through the steps now to forecast the energy utilisation of your smart home.
-      a. Click Run For each step, if there is an asterisk, that means the step is still running.
-      b. Please wait for the asterisk to go away , prioir to moving to next step.
-    Please read the description prior to each step in the jupyter notebook to understand the ML process.
+In this section we will configure an Amazon Sagemaker instance to forecast energy utilisation in the home.
+
+1. Navigate to the **AWS IoT Analytics** console.
+2. Select **Notebooks** from the left-hand navigation pane.
+3. Click **Create** to begin configuring a new Notebook.
+4. Click **Blank Notebook** and input the following: 
+    * **Name**: smarthome_notebook
+    * **Select data set sources**: batchdataset
+    * **Select a Notebook instance**: IoTAWorkshopSagemaker - this is the name of the notebook created with CloudFormation 
+5. **Create Notebook**
+6. Click on **IoTAWorkshopSagemaker**
+    * Choose **IoT Analytics** in the drop down menu
+    * Next to smarthome_notebook.ipynb, choose **Open in Jupyter**
+7. A new Amazon Sagemaker window should pop up and a message that says "Kernel not found". Click **Continue Without Kernel**
+8. Download the following Jupyter notebook: https://s3.amazonaws.com/iotareinvent18/SmartHomeNotebook.ipynb
+9. In the Jupyter Notebook console, click **File** -> **Open**
+10. Choose **Upload** and select the SmartHomeNotebook.ipynb notebook downloaded in step 8.
+11. Click on the SmartHomeNotebook.ipynb to be taken back to the Jupyter Notebook.
+12. Select **conda_mxnet_p36** as the kernel and click **Set kernel**.
+13. You should see some pre-filled Python code steps in the Jupyter notebook.
+14. Click **Run** for each step. Follow the documentation presented in the Notebook. The Notebook includes information about how the machine learning process works for each step.
+15. Run through all the steps in the SmartHomeNotebook to understand how the machine learning training process works with Jupyter Notebooks. _**Note**: Wait until the asterisk * disappears after running each cell. If you click 'Run' before the previous step is completed, this could cause some code to fail to complete and the algorithm will fail._
 
 \[[Top](#Top)\]
 
-Clean Up
---------
+## Recap and Review: What did we learn in this workshop?
 
-**Please cleanup the resources so that you dont incurr additional charges after workshop.**
+In Steps 3 and 4, we used AWS Quicksight, and Jupyter Notebooks to visualize and use machhine learning to gather additional insights into our data.
 
-    
-    1. SSH to the Ec2 docker instance
-        a. Execute clean-up.sh from /home/ec2-user/clean-up directory 
-    
-    2. Go to the AWS Cloudformation console
-        a. Delete the IoT Device Simulator stack
-        b. Delete the IoTAReinvent stack
-    
-    3. Go to the AWS Quicksight console
-        a. Click on Manage Data (upper right)
-        b. Select the dataset you created earlier , Click Delete data set 
-    
-    4. Go to the AWS ECS console
-        a. Click on Repositories (left pane)
-        b. Select the Repository you created earlier (container-app-ia), Click Delete 
-    
-    5. Go to the AWS Ec2 console
-        a. Click on Key Pairs (left pane)
-        b. Select the ssk key you created earlier, Click Delete 
-    
-    
+During the workshop, we saw how you can combine raw IoT data coming in real time from devices and public data sets analysed by third party tools. Using Pipelines, you can clean and standardise this data, so you can then perform advanced visualisations and analytics on the data. IoT Analytics is designed to solve the challenge of cleaning, organising, and making usable data out of hundreds, thousands, or even millions of data points.
+
+
+## Clean up resources in AWS
+
+In order to prevent incurring additonal charges, please clean up the resources created in the workshop.
+
+1. SSH to the EC2 docker instance from step 2c and execute clean-up.sh. This script will delete the IoT Analytics channels, pipelines, and datasets.
+    * Example: ``ssh -i Iotaworkshopkeypair.pem ec2-user@ec2-my-ec2-instance.eu-west-1.compute.amazonaws.com``
+    * `cd /home/ec2-user/clean-up`
+    * `sh clean-up.sh`
+2. Navigate to the **AWS CloudFormation** console to delete the CloudFormation stacks and their associated resources.
+    * Click on **IoTAnalyticsStack** and click **Delete**
+    * Click on **IoTDeviceSimulator** and click **Delete**
+    * _Note: Deleting the CloudFormation stacks can take several minutes._
+3. Navigate to the **AWS Quicksight** console
+    * Click on **Manage Data**
+    * Click on **batchdataset** and then **Delete data set** then **Delete**
+4. Navigate to the **Amazon ECS** console
+    * Click on **Repositories** under **Amazon ECR**
+    * Select **container-app-ia** and click **Delete**
+5. Navigate to the **AWS EC2** console
+    * Click on **Key Pairs** in the left navigation pane.
+    * Choose the EC2 keypair you created to SSH to your docker instance and click **Delete**.    
 
 \[[Top](#Top)\]
 
