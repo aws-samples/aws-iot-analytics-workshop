@@ -138,7 +138,7 @@ You will also need to give appropriate permissions to IoT Analytics to access yo
 1. Navigate to the **S3 Management Console**
 2. Click on your data store bucket ending with '-datastore'.
 3. Navigate to the **Permissions** tab
-4. Click on **Bucket Policy** and enter the following JSON policy:
+4. Click on **Bucket Policy** and enter the following JSON policy (be sure to edit to include your S3 bucket name):
 ```
 {
     "Version": "2012-10-17",
