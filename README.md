@@ -405,27 +405,56 @@ A container data set allows you to automatically run your analysis tools and gen
 
 \[[Top](#Top)\]
 
-Analyse Stream and Batch data 
-----------------------------
-
-### What you will learn: Step 2c.
+## Step 2c: Analyse Stream and Batch data 
 
 ![alt text](https://github.com/aws-samples/aws-iot-analytics-workshop/blob/master/images/arch.png "Architecture")
 
-    Create Data sets - 
-    On the AWS IoT Analytics console home page, in the left navigation pane, choose Analyze -> Data sets :
-        a. Click Create -> SQL Data sets -> Create SQL
-        b. ID - batchdataset
-        c. Data store source - iotastore , Click Next
-        d. SQL Query - select * from iotastore limit 5000
-        e. Keep rest of the options default and Create data set
-    
-    Now lets execute the dataset : 
-        a. Datasets -> batchdataset (click on it) -> Actions -> Run now
-        b. Wait for few mins for the results to appear in the Result preview section of the screen.
+Now that we have two data sets into the same data store, we can analyse the result of combining both the container data and simulated device data.
+
+### Create the combined data set
+
+1. Navigate to the **AWS IoT Analytics console**
+2. In the left navigation pane, navigate to **Data sets**
+    * **ID**: batchdataset
+    * **Select data store source**: iotastore
+3. Click **Next**
+4. **SQL Query**: ``SELECT * FROM iotastore limit 5000``
+5. Click **Next**
+6. Leave the rest of the options as default and click **Next**
+7. Optionally, you can choose to have your dataset be placed into an S3 bucket on the **Configure delivery rules for analysis results** pane.
+8. Click **Create data set**
+
+### Create and execute the combined data set
+
+1. Navigate to the **AWS IoT Analytics console**
+2. In the left navigation pane, navigate to **Data sets**
+    * **ID**: batchdataset
+    * **Select data store source**: iotastore
+3. Click **Next**
+4. **SQL Query**: ``SELECT * FROM iotastore limit 5000``
+5. Click **Next**
+6. Leave the rest of the options as default and click **Next**
+7. Optionally, you can choose to have your dataset be placed into an S3 bucket on the **Configure delivery rules for analysis results** pane.
+8. Click **Create data set**
+9. Click on your newly created **batchdataset**
+10. Click on **Actions** and then **Run now**
+11. The data set will take a few minutes to execute. You should see the results of the executed data set in the result preview, as well as an outputted .csv file which includes the complete data set.
       
 
 \[[Top](#Top)\]
+
+## Recap and Review: What have we done so far?
+
+In the workshop so far you have accomplished the following:
+ * Launched an IoT Device Simulator using CloudFormation
+ * Used the IoT Device Simulator to simulate data coming from a home energy monitoring device.
+ * Created an IoT Analytics pipeline that consumes, cleans and transforms that data.
+ * Created a custom data set with SQL that can be used for further analytics.
+ * Used a second CloudFormation template to launch an EC2 instance with a script to simulate a public data set.
+ * Used Amazon Elastic Container Registry to host your docker image and IoT Analytics to launch that docker container to simulate a custom data anlytics workload.
+ * Combined that simulated public data analytics workload with the simulated device data to make a meaningful data set.
+ 
+The purpose of the workshop has been to show you how you can use IoT Analytics for your various data analytics workloads, whether that be from external data sets, a custom analytics workload using external tools, or consuming data directly from IoT devices in real time.
 
 Bonus section
 =============
